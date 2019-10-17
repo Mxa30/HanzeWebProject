@@ -1,0 +1,57 @@
+body{
+  background-image: url("../source/asset/background.png");
+  background-position: center;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: Roboto;
+}
+
+header{
+  height: 60px;
+  position: relative;
+}
+
+.headText{
+  display: inline-block;
+  position: relative;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  margin: 0;
+}
+
+.leftButtonContain{
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 0;
+  display: inline-block;
+}
+
+.rightButtonContain{
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  right: 0;
+  display: inline-block;
+}
+
+.headButton{
+  padding: 5px 20px;
+  background-color: #6677CC;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  margin: 0 10px;
+}
+
+.logoutButton{
+  padding: 5px 20px;
+  background-color: #6677CC;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  margin: 0 10px;
+}

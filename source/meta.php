@@ -26,3 +26,5 @@
 
     <!--Website Icon-->
     <link rel="icon" type="image/x-icon" href="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../main.css">
