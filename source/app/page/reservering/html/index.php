@@ -2,5 +2,5 @@
 
 </head>
 <body>
-
+  <?php include (COMPONENT_PATH . "/header/index.php") ?>
 </body>

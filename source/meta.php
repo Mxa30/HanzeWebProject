@@ -1,7 +1,11 @@
 <!DOCTYPE html>
+<?php include "../../../../defaultpaths.php"?>
 <html lang="nl">
   <head>
+    <!-- META TAGS -->
     <meta charset="utf-8">
+    <!-- Definieer de viewport voor responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php
       $filePath = $_SERVER['REQUEST_URI'];
       // Definieer het file path per pagina, daarna plaatst het de beschrijving van die pagina
@@ -26,5 +30,10 @@
 
     <!--Website Icon-->
     <link rel="icon" type="image/x-icon" href="">
+
+    <!-- Font definieren -->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../../../../main.css">
+    <!-- Stylesheet van toepassing op elke pagina -->
+    <link rel="stylesheet" href="<?php echo SOURCE_PATH?>/main.css">
+    <!-- Stylesheet per apparte pagina -->
+    <link rel="stylesheet" href="../css/style.css">
