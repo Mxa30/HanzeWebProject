@@ -1,0 +1,101 @@
+body{
+  background-image: url("../source/asset/background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: Roboto;
+  overflow: hidden;
+}
+
+header{
+  height: 60px;
+  position: relative;
+}
+
+.headText{
+  display: inline-block;
+  position: relative;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  margin: 0;
+}
+
+.leftButtonContain{
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 0;
+  display: inline-block;
+}
+
+.rightButtonContain{
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  right: 0;
+  display: inline-block;
+}
+
+.headButton{
+  padding: 5px 20px;
+  background-color: #6677CC;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  margin: 0 10px;
+}
+
+.logoutButton{
+  padding: 5px 20px;
+  background-color: #6677CC;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  margin: 0 10px;
+}
+
+/* SCROLLBAR */
+/* width van scrollbar*/
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Corner block */
+::-webkit-scrollbar-corner{
+  display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: hsla(0, 0%, 100%, 1);
+  border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2929CC;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: -2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0067d0;
+}
+
+/* Geen bluawe rand rond knoppen, input etc. */
+textarea:focus, input:focus, select:focus, button:focus{
+  outline: none;
+}
+/* Cursor wordt een pointer wanneer de gebruiker over een van
+deze elementen gaat */
+select:focus, button:focus,select:hover, button:hover{
+  cursor: pointer;
+}

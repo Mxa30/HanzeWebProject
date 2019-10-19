@@ -1,0 +1,175 @@
+main{
+  width: 95vw;
+  height: auto;
+  margin: 10px auto 0 auto;
+}
+
+#kamerLijstID{
+  width: 60%;
+  height: 90vh;
+  background-color: #F2F2F2;
+  border-radius: 25px;
+  overflow: auto;
+  display: inline-block;
+}
+
+/* HEADER KAMERLIJST */
+.kamerHead{
+  width: 95%;
+  height:30px;
+  margin: 10px auto 0;
+  border-bottom: 1px solid #707070;
+  position: relative;
+}
+
+h2{
+  font-size: 1.2em;
+  font-weight: 300;
+  margin: 0px;
+  margin-left: 5px;
+  display: inline-block;
+}
+
+#searchFormID{
+  width: 170px;
+  display: inline-block;
+  position: absolute;
+  right: 5px;
+}
+
+#searchInputID{
+  height: 25px;
+  width: 170px;
+  border-style: none;
+  border-radius: 50px;
+  padding: 0px;
+}
+
+#searchInputID::placeholder{
+  padding-left: 10px;
+}
+
+#searchButtonID{
+  padding: 0px;
+  border-style: none;
+  background-color: #fff;
+  margin: 4px 0 0 -30px;
+  position: absolute;
+}
+
+#searchIconID{
+  width: 15px;
+  height: 15px;
+}
+
+/* TABLE KAMERLIJST */
+
+#kamerTableContain{
+  width: 95%;
+  height: auto;
+  margin: 5px auto 0 auto;
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+#kamerViewTableID{
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+#kamerViewTableID th,#kamerViewTableID td{
+  border-bottom: 1px solid #707070;
+  border-left: 1px solid #707070;
+  border-right: 1px solid #707070;
+  padding: 0 50px;
+}
+
+#kamerViewTableID td{
+  height: 30px;
+}
+
+#kamerViewTableID th:first-child,#kamerViewTableID td:first-child{
+  border-left: none;
+}
+
+#kamerViewTableID th:last-child,#kamerViewTableID td:last-child{
+  border-right: none;
+}
+
+/* KAMER FORM */
+#kamerFormID{
+  width: 35%;
+  height: 90vh;
+  background-color: #F2F2F2;
+  border-radius: 25px;
+  overflow: auto;
+  display: inline-block;
+  position: relative;
+  float: right;
+}
+
+#kamerFormContainID{
+  width: 90%;
+  height: auto;
+  margin: 10px auto 0 auto;
+  font-size: 1em;
+}
+
+#kamerInputFormID{
+  border-collapse: collapse;
+  border: 0px;
+}
+
+#kamerInputFormID tr{
+  height: 40px;
+}
+
+#kamerInputFormID td{
+  width: 150px;
+}
+
+td input,td select{
+  width: 200px;
+  height: 25px;
+  border-radius: 20px;
+  border-style: none;
+  padding-left: 5px;
+}
+
+td input[type="checkbox"]{
+  width: 15px;
+  height: 15px;
+}
+
+td textarea{
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+  border-style: none;
+  resize: none;
+  padding-left: 5px;
+}
+
+/* TOEVOEGEN EN VERWIJDER KNOPPEN */
+#VoegButton{
+  padding: 0 30px;
+  height: 30px;
+  background-color: #2929CC;
+  border-style: none;
+  border-radius: 50px;
+  color: #fff;
+}
+
+#VerwButton{
+  padding: 0 30px;
+  height: 30px;
+  background-color: #BE0000;
+  border-style: none;
+  border-radius: 50px;
+  color: #fff;
+}
+
+#noticeParID{
+  font-size: .9em;
+}
