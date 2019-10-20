@@ -6,7 +6,7 @@ main{
 
 #kamerLijstID{
   width: 60%;
-  height: 90vh;
+  height: 85vh;
   background-color: #F2F2F2;
   border-radius: 25px;
   overflow: auto;
@@ -100,7 +100,7 @@ h2{
 /* KAMER FORM */
 #kamerFormID{
   width: 35%;
-  height: 90vh;
+  height: 85vh;
   background-color: #F2F2F2;
   border-radius: 25px;
   overflow: auto;

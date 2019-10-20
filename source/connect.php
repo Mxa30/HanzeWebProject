@@ -16,11 +16,11 @@ $dbname = "roomservice";
 // Create connection
 $connect = new mysqli($servername, $username, $password, $dbname);
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    echo "not good";
+if ($connect->connect_error) {
+    die("Connection failed: " . $connect->connect_error);
+    echo "failed to connect";
 }else {
-  echo "good";
+  echo "connection succesfull";
 }
 
 

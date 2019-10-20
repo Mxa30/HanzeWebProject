@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<?php include "../../../../defaultpaths.php"?>
+<?php
+  // Include de default paths
+  include "../../../../defaultpaths.php";
+  // Include de database in elke pagina
+  include SOURCE_PATH . "/connect.php";
+?>
 <html lang="nl">
   <head>
     <!-- META TAGS -->
