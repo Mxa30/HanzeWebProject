@@ -16,7 +16,7 @@ $( function() {
 <body>
   <?php include (COMPONENT_PATH . "/header/index.php") ?>
 <div class="date">
-  <p>Date: <input type="text" id="datepicker"></p>
+  <p>Date: <input type="date" id="datepicker"></p>
 </div>
 
 
