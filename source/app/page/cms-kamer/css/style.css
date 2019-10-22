@@ -64,13 +64,19 @@ h2{
 
 /* TABLE KAMERLIJST */
 
+#kamerTableContain table{
+  width: 175%;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
 #kamerTableContain{
   width: 95%;
   height: auto;
   margin: 5px auto 0 auto;
   position: relative;
-  overflow-x: scroll;
-  overflow-y: scroll;
 }
 
 #kamerViewTableID{
@@ -82,10 +88,14 @@ h2{
   border-bottom: 1px solid #707070;
   border-left: 1px solid #707070;
   border-right: 1px solid #707070;
-  padding: 0 50px;
+}
+
+#kamerViewTableID th{
+  padding: 10px 5px;
 }
 
 #kamerViewTableID td{
+  padding: 5px 5px;
   height: 30px;
 }
 

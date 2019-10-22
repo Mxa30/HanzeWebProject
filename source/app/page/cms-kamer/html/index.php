@@ -111,10 +111,10 @@
             </tr>
             <tr>
               <td>
-                <button type="submit" name="submitKamer" id="VoegButton">Toevoegen</button>
+                <button type="button" name="submitKamer" id="VoegButton">Toevoegen</button>
               </td>
               <td>
-                <button type="submit" name="submitKamerVerwijder" id="VerwButton">Verwijderen</button>
+                <button type="button" name="submitKamerVerwijder" id="VerwButton">Verwijderen</button>
               </td>
             </tr>
           </table>
