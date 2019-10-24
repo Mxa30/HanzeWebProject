@@ -42,3 +42,10 @@
     <link rel="stylesheet" href="<?php echo SOURCE_PATH?>/main.css">
     <!-- Stylesheet per apparte pagina -->
     <link rel="stylesheet" href="../css/style.css">
+
+    <!-- clear resubmit of form so no popup is shown -->
+    <script>
+      if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+      }
+    </script>
