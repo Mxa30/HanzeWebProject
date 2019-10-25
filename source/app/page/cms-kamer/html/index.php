@@ -85,6 +85,14 @@
               </td>
             </tr>
             <tr>
+              <td>Verdieping:</td>
+              <td>
+                <select name="verdieping">
+                  <!-- PHP SCRIPT VOOR VERDIEPING NUMMER -->
+                </select>
+              </td>
+            </tr>
+            <tr>
               <td>Capaciteit:</td>
               <td><input type="number" name="capaciteit" max="450"></td>
             </tr>
@@ -122,7 +130,7 @@
               </td>
             </tr>
             <tr>
-              <td>Zichtbaarheid:</td>
+              <td>Zichtbaar:</td>
               <td>
                 <select name="zichtbaar">
                   <option value="ja">Ja</option>
