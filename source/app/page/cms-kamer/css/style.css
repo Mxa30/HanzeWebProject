@@ -65,7 +65,7 @@ h2{
 /* TABLE KAMERLIJST */
 
 #kamerTableContain table{
-  width: 175%;
+  width: 200%;
   background-color: #fff;
   border-radius: 10px;
   overflow-x: scroll;
@@ -154,7 +154,7 @@ td input[type="checkbox"]{
 
 td textarea{
   width: 200px;
-  height: 150px;
+  height: 100px;
   border-radius: 10px;
   border-style: none;
   resize: none;

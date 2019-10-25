@@ -1,4 +1,6 @@
-<?php include "../../../../meta.php" ?>
+<?php include "../../../../meta.php";
+      include "../php/kamer_process.php";
+?>
 
 </head>
 <body>
@@ -25,20 +27,34 @@
               <th>Faciliteiten</th>
               <th>Kamer soort</th>
               <th>Beschrijving</th>
+              <th>Zichtbaar</th>
             </tr>
           </thead>
           <tbody>
-            <!-- PHP CODE VOOR DATABASE -->
+            <?php
+              while($record = mysqli_fetch_assoc($kamerLijstResult)){
+                echo "<tr>
+                        <td>{$record['kamernummer']}</td>
+                        <td>{$record['gebouw']} - {$record['adres']}</td>
+                        <td>{$record['vleugel']}</td>
+                        <td>{$record['kamercapaciteit']}</td>
+                        <td>{$record['faciliteit']}</td>
+                        <td>{$record['kamersoort']}</td>
+                        <td>{$record['beschrijving']}</td>
+                        <td>Function not written</td>
+                      </tr>";
+              }
+            ?>
           </tbody>
         </table>
       </div>
     </div>
     <div id="kamerFormID">
       <div class="kamerHead">
-        <h2>Kamer lijst</h2>
+        <h2>Kamer toevoegen</h2>
       </div>
       <div id="kamerFormContainID">
-        <form>
+        <form method="post">
           <table id="kamerInputFormID">
             <tr>
               <td>Kamer:</td>
@@ -48,6 +64,11 @@
               <td>Gebouw:</td>
               <td>
                 <select name="gebouw">
+                  <?php
+                    while($record = mysqli_fetch_assoc($gebouwOptionResult)){
+                      echo "<option value='{$record['gebouw']}'>{$record['gebouw']} - {$record['adres']}</option>";
+                    }
+                  ?>
                 </select>
               </td>
             </tr>
@@ -55,12 +76,25 @@
               <td>Vleugel:</td>
               <td>
                 <select name="vleugel">
+                  <?php
+                    while($record = mysqli_fetch_assoc($vleugelOptionResult)){
+                      echo "<option value='{$record['vleugel']}'>{$record['vleugel']}</option>";
+                    }
+                  ?>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Verdieping:</td>
+              <td>
+                <select name="verdieping">
+                  <!-- PHP SCRIPT VOOR VERDIEPING NUMMER -->
                 </select>
               </td>
             </tr>
             <tr>
               <td>Capaciteit:</td>
-              <td><input type="number" name="capaciteit"></td>
+              <td><input type="number" name="capaciteit" max="450"></td>
             </tr>
             <tr>
               <td>Beschrijving:</td>
@@ -70,51 +104,46 @@
               <td>Kamersoort:</td>
               <td>
                 <select name="kamersoort">
-
+                  <?php
+                    while($record = mysqli_fetch_assoc($soortOptionResult)){
+                      echo "<option value='{$record['kamersoort']}'>{$record['kamersoort']}</option>";
+                    }
+                  ?>
                 </select>
               </td>
             </tr>
             <tr>
-              <!-- VOEG MEER OPTIES TOE -->
               <td>Faciliteiten:</td>
               <td>
                 <table>
-                  <tr>
-                    <td>Digibord:</td>
-                    <td>
-                      <input type="checkbox" name="digibord">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Stopcontacten:</td>
-                    <td>
-                      <input type="checkbox" name="stopcontacten">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Whiteboard:</td>
-                    <td>
-                      <input type="checkbox" name="whiteboard">
-                    </td>
-                  </tr>
+                  <?php
+                    while($record = mysqli_fetch_assoc($faciliteitOptionResult)){
+                      echo "<tr>
+                        <td>{$record['faciliteit']}:</td>
+                        <td>
+                          <input type='checkbox' name='{$record['faciliteit']}'>
+                        </td>
+                      </tr>";
+                    }
+                  ?>
                 </table>
               </td>
             </tr>
             <tr>
-              <td>Zichtbaarheid:</td>
+              <td>Zichtbaar:</td>
               <td>
                 <select name="zichtbaar">
-                  <option value="">Zichtbaar</option>
-                  <option value="">Niet zichtbaar</option>
+                  <option value="ja">Ja</option>
+                  <option value="nee">Nee</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td>
-                <button type="button" name="submitKamer" id="VoegButton">Toevoegen</button>
+                <button type="submit" name="submitKamerVoeg" id="VoegButton">Toevoegen</button>
               </td>
               <td>
-                <button type="button" name="submitKamerVerwijder" id="VerwButton">Verwijderen</button>
+                <button type="submit" name="submitKamerVerwijder" id="VerwButton">Verwijderen</button>
               </td>
             </tr>
           </table>
