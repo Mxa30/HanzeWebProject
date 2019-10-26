@@ -36,7 +36,7 @@
 
 <form>
   <div class="multiselect">
-    <div class="selectBox" onclick="showCheckboxes(1)">
+    <div class="selectBox" onclick="showCheckboxes(0)">
       <select>
         <option>Gebouw</option>
       </select>
@@ -53,7 +53,7 @@
   </div>
   </br>
   <div class="multiselect">
-    <div class="selectBox" onclick="showCheckboxes(0)">
+    <div class="selectBox" onclick="showCheckboxes(1)">
       <select>
         <option>Vleugel</option>
       </select>
@@ -70,7 +70,7 @@
   </div>
   </br>
   <div class="multiselect">
-    <div class="selectBox" onclick="showCheckboxes(1)">
+    <div class="selectBox" onclick="showCheckboxes(2)">
       <select>
         <option>Verdieping</option>
       </select>
@@ -87,7 +87,7 @@
   </div>
   </br>
   <div class="multiselect">
-    <div class="selectBox" onclick="showCheckboxes(1)">
+    <div class="selectBox" onclick="showCheckboxes(3)">
       <select>
         <option>Aantal personen</option>
       </select>
@@ -104,7 +104,7 @@
   </div>
   </br>
   <div class="multiselect">
-    <div class="selectBox" onclick="showCheckboxes(2)">
+    <div class="selectBox" onclick="showCheckboxes(4)">
       <select>
         <option>Faciliteiten</option>
       </select>
