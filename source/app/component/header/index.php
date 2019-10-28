@@ -9,7 +9,7 @@
     $button2Link = PAGE_PATH . "/kamer_overzicht/html/index.php";
     $button3Link = PAGE_PATH . "/login/html/index.php";
     $selectedButton = null;
-  }elseif ($filePath == "/HanzeWebProject/source/app/page/reservering/html/index.php"){
+  }elseif ($filePath == "/source/app/page/reservering/html/index.php"){
     $button1 = "Mijn reserveringen";
     $button2 = "Kamer overzicht";
     $button3 = "Uitloggen";
@@ -18,7 +18,7 @@
     $button2Link = PAGE_PATH . "/kamer_overzicht/html/index.php";
     $button3Link = PAGE_PATH . "/login/html/index.php";
     $selectedButton = null;
-  }elseif ($filePath == "/HanzeWebProject/source/app/page/kamer_overzicht/html/index.php"){
+  }elseif ($filePath == "/source/app/page/kamer_overzicht/html/index.php"){
     $button1 = "Mijn reserveringen";
     $button2 = "Kamer overzicht";
     $button3 = "Uitloggen";
@@ -27,7 +27,7 @@
     $button2Link = PAGE_PATH . "/kamer_overzicht/html/index.php";
     $button3Link = PAGE_PATH . "/login/html/index.php";
     $selectedButton = 2;
-  }elseif ($filePath == "/HanzeWebProject/source/app/page/mijn_reservering/html/index.php"){
+  }elseif ($filePath == "/source/app/page/mijn_reservering/html/index.php"){
     $button1 = "Mijn reserveringen";
     $button2 = "Kamer overzicht";
     $button3 = "Uitloggen";
@@ -36,7 +36,7 @@
     $button2Link = PAGE_PATH . "/kamer_overzicht/html/index.php";
     $button3Link = PAGE_PATH . "/login/html/index.php";
     $selectedButton = 1;
-  }elseif($filePath == "/HanzeWebProject/source/app/page/cms-kamer/html/index.php"){
+  }elseif($filePath == "/source/app/page/cms-kamer/html/index.php"){
     $button1 = "Kamers aanpassen";
     $button2 = "Alle reserveringen";
     $button3 = "Uitloggen";
@@ -45,7 +45,7 @@
     $button2Link = PAGE_PATH . "/cms-reservering/html/index.php";
     $button3Link = PAGE_PATH . "/login/html/index.php";
     $selectedButton = 1;
-  }elseif ($filePath == "/HanzeWebProject/source/app/page/cms-reservering/html/index.php"){
+  }elseif ($filePath == "/source/app/page/cms-reservering/html/index.php"){
     $button1 = "Kamers aanpassen";
     $button2 = "Alle reserveringen";
     $button3 = "Uitloggen";
@@ -54,7 +54,7 @@
     $button2Link = PAGE_PATH . "/cms-reservering/html/index.php";
     $button3Link = PAGE_PATH . "/login/html/index.php";
     $selectedButton = 2;
-  }elseif($filePath == "/HanzeWebProject/source/app/page/login/html/index.php"){
+  }elseif($filePath == "/source/app/page/login/html/index.php"){
     $button1 = null;
     $button2 = null;
     $button3 = "Maak account";
