@@ -136,7 +136,175 @@
             echo "Error: " . $sqlPostKamerQuery . "<br>" . mysqli_error($conn);
           }
         }
+        // Als faciliteit in de query moet en beschrijving niet, voer dan deze code uit.
+        elseif (!empty($faciliteitEmpty) && empty($beschrijvingEmpty)) {
+          $sqlPostDeelKamerQuery1="";
+          $sqlPostDeelKamerQuery2="";
+          $sqlPostDeelKamerQuery3="";
+          // Voor elke faciliteit, maak een query die die faciliteit apart toevoegd.
+          while($record = mysqli_fetch_assoc($facils)){
+            // als digibord gecheckt is, maak er dan een query voor.
+            if ($digibord && $record['faciliteit'] == 'digibord') {
+              $sqlPostDeelKamerQuery1 = "('{$kamer}','{$record['faciliteit']}','{$gebouw}','{$vleugel}','$kamersoort','{$capaciteit}')";
+            }
+            // als stopcontacten gecheckt is, maak er dan een query voor.
+            if ($stopcontacten && $record['faciliteit'] == 'stopcontacten') {
+              $sqlPostDeelKamerQuery2 = "('{$kamer}','{$record['faciliteit']}','{$gebouw}','{$vleugel}','$kamersoort','{$capaciteit}')";
+            }
+            // als whiteboard gecheckt is, maak er dan een query voor.
+            if ($whiteboard && $record['faciliteit'] == 'whiteboard') {
+              $sqlPostDeelKamerQuery3 = "('{$kamer}','{$record['faciliteit']}','{$gebouw}','{$vleugel}','$kamersoort','{$capaciteit}'";
+            }
+          }
+          // Voeg het einde van elke deelquery toe op basis van welke deelquey's ingevuld zijn.
+          if (!empty($sqlPostDeelKamerQuery1) && !empty($sqlPostDeelKamerQuery2) && !empty($sqlPostDeelKamerQuery3)) {
+            $sqlPostDeelKamerQuery1 .= ",";
+            $sqlPostDeelKamerQuery2 .= ",";
+            $sqlPostDeelKamerQuery3 .= ";";
+          }else if(!empty($sqlPostDeelKamerQuery1) && !empty($sqlPostDeelKamerQuery2) && empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery1 .= ",";
+            $sqlPostDeelKamerQuery2 .= ";";
+          }else if(!empty($sqlPostDeelKamerQuery1) && empty($sqlPostDeelKamerQuery2) && !empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery1 .= ",";
+            $sqlPostDeelKamerQuery3 .= ";";
+          }else if(empty($sqlPostDeelKamerQuery1) && !empty($sqlPostDeelKamerQuery2) && !empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery2 .= ",";
+            $sqlPostDeelKamerQuery3 .= ";";
+          }else if(!empty($sqlPostDeelKamerQuery1) && empty($sqlPostDeelKamerQuery2) && empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery1 .= ";";
+          }else if(empty($sqlPostDeelKamerQuery1) && !empty($sqlPostDeelKamerQuery2) && empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery2 .= ";";
+          }else if(empty($sqlPostDeelKamerQuery1) && empty($sqlPostDeelKamerQuery2) && !empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery3 .= ";";
+          }
+          // De query samenstellen
+          $sqlPostKamerQuery = "
+          insert into ruimte (kamernummer,{$faciliteitEmpty}gebouw,vleugel,kamersoort,kamercapaciteit)
+          values {$sqlPostDeelKamerQuery1}{$sqlPostDeelKamerQuery2}{$sqlPostDeelKamerQuery3}";
+
+          if (mysqli_query($conn, $sqlPostKamerQuery)) {
+            // Added successfully
+          }else{
+            echo "Error: " . $sqlPostKamerQuery . "<br>" . mysqli_error($conn);
+          }
+        }
       }
+      // Als kamernummer bestaat, maak dan een query waar deze wordt geupdate in de database.
+      if ($kamerExist) {
+        // Als faciliteiten allemaal niet gecheckt zijn, zorg dan dat deze niet wordt uitgevoerd in de query.
+        if (!$digibord && !$stopcontacten && !$whiteboard) {
+          $faciliteitEmpty = "";
+        }else {
+          $faciliteitEmpty = "faciliteit,";
+        }
+        // Als beschrijving leeg is, zorg dan dat deze niet wordt uitgevoerd in de query.
+        if (empty($beschrijving)) {
+          $beschrijvingEmpty = "";
+        }else {
+          $beschrijvingEmpty = "beschrijving,";
+        }
+        // Als faciliteit in de query moet en beschrijving ook, voer dan deze code uit.
+        if (!empty($faciliteitEmpty) && !empty($beschrijvingEmpty)) {
+          $sqlPostDeelKamerQuery1="";
+          $sqlPostDeelKamerQuery2="";
+          $sqlPostDeelKamerQuery3="";
+          // Voor elke faciliteit, maak een query die die faciliteit apart toevoegd.
+          while($record = mysqli_fetch_assoc($facils)){
+            // als digibord gecheckt is, maak er dan een query voor.
+            if ($digibord && $record['faciliteit'] == 'digibord') {
+              $sqlPostDeelKamerQuery = "(faciliteit = '{$record['digibord']}',beschrijving = '{$beschrijving}',gebouw = '{$gebouw}',vleugel = '{$vleugel}',kamersoort = '$kamersoort',kamercapaciteit = '{$capaciteit}')";
+              $sqlPostKamerQuery = "
+              update ruimte
+              set {$sqlPostDeelKamerQuery}
+              where kamernummer = {$kamer} and faciliteit = digibord;";
+              if (mysqli_query($conn, $sqlPostKamerQuery)) {
+                // Added successfully
+              }else{
+                echo "Error: " . $sqlPostKamerQuery . "<br>" . mysqli_error($conn);
+              }
+            }
+            // als stopcontacten gecheckt is, maak er dan een query voor.
+            if ($stopcontacten && $record['faciliteit'] == 'stopcontacten') {
+              $sqlPostDeelKamerQuery = "(faciliteit = '{$record['stopcontacten']}',beschrijving = '{$beschrijving}',gebouw = '{$gebouw}',vleugel = '{$vleugel}',kamersoort = '$kamersoort',kamercapaciteit = '{$capaciteit}')";
+              $sqlPostKamerQuery = "
+              update ruimte
+              set {$sqlPostDeelKamerQuery}
+              where kamernummer = {$kamer} and faciliteit = stopcontacten;";
+              if (mysqli_query($conn, $sqlPostKamerQuery)) {
+                // Added successfully
+              }else{
+                echo "Error: " . $sqlPostKamerQuery . "<br>" . mysqli_error($conn);
+              }
+            }
+            // als whiteboard gecheckt is, maak er dan een query voor.
+            if ($whiteboard && $record['faciliteit'] == 'whiteboard') {
+              $sqlPostDeelKamerQuery = "(faciliteit = '{$record['whiteboard']}',beschrijving = '{$beschrijving}',gebouw = '{$gebouw}',vleugel = '{$vleugel}',kamersoort = '$kamersoort',kamercapaciteit = '{$capaciteit}')";
+              $sqlPostKamerQuery = "
+              update ruimte
+              set {$sqlPostDeelKamerQuery}
+              where kamernummer = {$kamer} and faciliteit = stopcontacten;";
+              if (mysqli_query($conn, $sqlPostKamerQuery)) {
+                // Added successfully
+              }else{
+                echo "Error: " . $sqlPostKamerQuery . "<br>" . mysqli_error($conn);
+              }
+            }
+          }
+        }
+        // Als faciliteit in de query moet en beschrijving niet, voer dan deze code uit.
+        elseif (!empty($faciliteitEmpty) && empty($beschrijvingEmpty)) {
+          $sqlPostDeelKamerQuery1="";
+          $sqlPostDeelKamerQuery2="";
+          $sqlPostDeelKamerQuery3="";
+          // Voor elke faciliteit, maak een query die die faciliteit apart toevoegd.
+          while($record = mysqli_fetch_assoc($facils)){
+            // als digibord gecheckt is, maak er dan een query voor.
+            if ($digibord && $record['faciliteit'] == 'digibord') {
+              $sqlPostDeelKamerQuery1 = "('{$kamer}','{$record['faciliteit']}','{$gebouw}','{$vleugel}','$kamersoort','{$capaciteit}')";
+            }
+            // als stopcontacten gecheckt is, maak er dan een query voor.
+            if ($stopcontacten && $record['faciliteit'] == 'stopcontacten') {
+              $sqlPostDeelKamerQuery2 = "('{$kamer}','{$record['faciliteit']}','{$gebouw}','{$vleugel}','$kamersoort','{$capaciteit}')";
+            }
+            // als whiteboard gecheckt is, maak er dan een query voor.
+            if ($whiteboard && $record['faciliteit'] == 'whiteboard') {
+              $sqlPostDeelKamerQuery3 = "('{$kamer}','{$record['faciliteit']}','{$gebouw}','{$vleugel}','$kamersoort','{$capaciteit}'";
+            }
+          }
+          // Voeg het einde van elke deelquery toe op basis van welke deelquey's ingevuld zijn.
+          if (!empty($sqlPostDeelKamerQuery1) && !empty($sqlPostDeelKamerQuery2) && !empty($sqlPostDeelKamerQuery3)) {
+            $sqlPostDeelKamerQuery1 .= ",";
+            $sqlPostDeelKamerQuery2 .= ",";
+            $sqlPostDeelKamerQuery3 .= ";";
+          }else if(!empty($sqlPostDeelKamerQuery1) && !empty($sqlPostDeelKamerQuery2) && empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery1 .= ",";
+            $sqlPostDeelKamerQuery2 .= ";";
+          }else if(!empty($sqlPostDeelKamerQuery1) && empty($sqlPostDeelKamerQuery2) && !empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery1 .= ",";
+            $sqlPostDeelKamerQuery3 .= ";";
+          }else if(empty($sqlPostDeelKamerQuery1) && !empty($sqlPostDeelKamerQuery2) && !empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery2 .= ",";
+            $sqlPostDeelKamerQuery3 .= ";";
+          }else if(!empty($sqlPostDeelKamerQuery1) && empty($sqlPostDeelKamerQuery2) && empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery1 .= ";";
+          }else if(empty($sqlPostDeelKamerQuery1) && !empty($sqlPostDeelKamerQuery2) && empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery2 .= ";";
+          }else if(empty($sqlPostDeelKamerQuery1) && empty($sqlPostDeelKamerQuery2) && !empty($sqlPostDeelKamerQuery3)){
+            $sqlPostDeelKamerQuery3 .= ";";
+          }
+          // De query samenstellen
+          $sqlPostKamerQuery = "
+          insert into ruimte (kamernummer,{$faciliteitEmpty}gebouw,vleugel,kamersoort,kamercapaciteit)
+          values {$sqlPostDeelKamerQuery1}{$sqlPostDeelKamerQuery2}{$sqlPostDeelKamerQuery3}";
+
+          if (mysqli_query($conn, $sqlPostKamerQuery)) {
+            // Added successfully
+          }else{
+            echo "Error: " . $sqlPostKamerQuery . "<br>" . mysqli_error($conn);
+          }
+        }
+      }
+
     }
   }
 
