@@ -1,3 +1,9 @@
 .date p{
   text-align: center;
 }
+
+.overzicht_container{
+  width: 95vw;
+  height: 80%;
+  overflow-y: scroll;
+}
