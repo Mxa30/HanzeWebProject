@@ -25,7 +25,7 @@
   from gebouw
   order by gebouw;";
 
-  // Vleuel:
+  // Vleugel:
   $sqlGetOptionVleugelQuery = "
   select vleugel
   from vleugel
