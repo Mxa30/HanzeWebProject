@@ -1,10 +1,10 @@
 <?php include "../../../../meta.php" ?>
 
 <?php include "../php/functions.php"; ?>
-
+  <?php include (COMPONENT_PATH . "/header/index.php") ?>
 </head>
 <body>
-  <?php include (COMPONENT_PATH . "/header/index.php") ?>
+
 
     <!-- FUNCTIE maken om de datum te veranderen-->
 <div class="date">
@@ -12,12 +12,14 @@
 </div>
 
   <!-- foto's van de kamers erin toevoegen -->
+
   <div class="overzicht_container">
     <div class="overzicht_header">
 
     </div>
     <div class="overzichtTabel_container">
       <table>
+          <!-- eerst de tabel maken voor de foto, met de knop 'meer informatie' -->
         <?php
           echo "
           <tr class='overzicht_full_container'>
@@ -40,6 +42,7 @@
               </div>
             </td>
           </tr>";
+
         ?>
       </table>
     </div>
