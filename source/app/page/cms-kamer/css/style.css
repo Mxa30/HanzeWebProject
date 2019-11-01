@@ -65,7 +65,7 @@ h2{
 /* TABLE KAMERLIJST */
 
 #kamerTableContain table{
-  width: 200%;
+  width: 1850px;
   background-color: #fff;
   border-radius: 10px;
   overflow-x: scroll;
@@ -105,6 +105,10 @@ h2{
 
 #kamerViewTableID th:last-child,#kamerViewTableID td:last-child{
   border-right: none;
+}
+
+#kamerViewTableID tr:last-child td{
+  border-bottom: none;
 }
 
 /* KAMER FORM */

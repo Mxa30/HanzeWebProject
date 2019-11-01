@@ -23,6 +23,7 @@
               <th>Kamer</th>
               <th>Gebouw</th>
               <th>Vleugel</th>
+              <th>Verdieping</th>
               <th>Capaciteit</th>
               <th>Faciliteiten</th>
               <th>Kamer soort</th>
@@ -37,11 +38,12 @@
                         <td>{$record['kamernummer']}</td>
                         <td>{$record['gebouw']} - {$record['adres']}</td>
                         <td>{$record['vleugel']}</td>
+                        <td>{$record['verdieping']}</td>
                         <td>{$record['kamercapaciteit']}</td>
                         <td>{$record['faciliteit']}</td>
                         <td>{$record['kamersoort']}</td>
                         <td>{$record['beschrijving']}</td>
-                        <td>Function not written</td>
+                        <td>{$record['zichtbaar']}</td>
                       </tr>";
               }
             ?>
@@ -88,7 +90,9 @@
               <td>Verdieping:</td>
               <td>
                 <select name="verdieping">
-                  <!-- PHP SCRIPT VOOR VERDIEPING NUMMER -->
+                  <?php while($record = mysqli_fetch_assoc($verdiepingOptionResult)){
+                    echo "<option value='{$record['verdieping']}'>{$record['verdieping']}</option>";
+                  }?>
                 </select>
               </td>
             </tr>
@@ -133,8 +137,11 @@
               <td>Zichtbaar:</td>
               <td>
                 <select name="zichtbaar">
-                  <option value="ja">Ja</option>
-                  <option value="nee">Nee</option>
+                  <?php
+                    while($record = mysqli_fetch_assoc($zichtbaarOptionResult)){
+                      echo "<option value='{$record['zichtbaar']}'>{$record['zichtbaar']}</option>";
+                    }
+                  ?>
                 </select>
               </td>
             </tr>
