@@ -64,24 +64,22 @@ h2{
 
 /* TABLE KAMERLIJST */
 
-table{
-  width: 100%;
-  background-color: #fff;
-  border-radius: 10px;
-  overflow-x: scroll;
-  overflow-y: scroll;
-}
-
 #kamerTableContain{
   width: 95%;
   height: auto;
   margin: 5px auto 0 auto;
   position: relative;
+  text-align: center;
 }
 
 #kamerViewTableID{
   border-collapse: collapse;
   table-layout: fixed;
+  width: 1385px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow-x: scroll;
+  overflow-y: scroll;
 }
 
 #kamerViewTableID th,#kamerViewTableID td{
@@ -101,24 +99,41 @@ table{
 
 #kamerViewTableID th:first-child,#kamerViewTableID td:first-child{
   border-left: none;
+  width: 75px;
+}
+
+#kamerViewTableID th:nth-child(2),#kamerViewTableID td:nth-child(2){
+  width: 100px;
+}
+
+#kamerViewTableID th:nth-child(3),#kamerViewTableID td:nth-child(3){
+  width: 200px;
+}
+
+#kamerViewTableID th:nth-child(4),#kamerViewTableID td:nth-child(4){
+  width: 200px;
+}
+
+#kamerViewTableID th:nth-child(5),#kamerViewTableID td:nth-child(5){
+  width: 160px;
+}
+
+#kamerViewTableID th:nth-child(6),#kamerViewTableID td:nth-child(6){
+  width: 270px;
 }
 
 #kamerViewTableID th:last-child,#kamerViewTableID td:last-child{
   border-right: none;
 }
 
-/* Knoppen in tabel */
-#wijzigButton{
-  padding: 0 30px;
-  height: 30px;
-  background-color: #2929CC;
-  border-style: none;
-  border-radius: 50px;
-  color: #fff;
+#kamerViewTableID tr:last-child td{
+  border-bottom: none;
 }
 
+/* Knoppen in tabel */
+
 #verwijderButton{
-  padding: 0 30px;
+  padding: 0 40px;
   height: 30px;
   background-color: #BE0000;
   border-style: none;
