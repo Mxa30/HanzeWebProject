@@ -1,14 +1,8 @@
 <!DOCTYPE html>
-<?php
-session_start();
-echo "$password";
- ?>
 <html lang="" dir="ltr">
   <head>
-    <title>loginpagina</title>
     <meta charset="utf-8">
-    <?php include (COMPONENT_PATH . "/header/index.php") ?>
-    <title>login pagina</title>
+    <title>hoi</title>
 
   </head>
   <body>
@@ -18,7 +12,7 @@ echo "$password";
         <input type="password" name="password" value="">
         <input type="submit" name="login" value="login">
         <br/>
-    <button type="button" name="button"><a href="aanmeld-pagina.php">aanmeldpagina</a></button>
+        <button type="button" name="button"><a href="aanmeld-pagina.php">aanmeldpagina</a></button>
 
       </form>
 
@@ -30,7 +24,7 @@ echo "$password";
 
   <?php
 
-  require "login-functions.php";
+  include "login-functions.php";
   include "../../../../connect.php";
   ?>
 </html>
