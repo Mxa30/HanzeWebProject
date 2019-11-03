@@ -28,23 +28,89 @@ order by faciliteit";
 
 $sqlGetOptionFaciliteitResult = mysqli_query($conn, $sqlGetOptionFaciliteitQuery);
 
-function sendToDB($deimtenCheck,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$Check1,$Check2,$Check3,$digiCheck,$stopCheck,$whiteCheck){
+// Functie om querys te maken die worden verstuurd naar de database om gefilterde kamers te laten zien.
+function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dCheck,$eCheck,$Check1,$Check2,$Check3,$digiCheck,$stopCheck,$whiteCheck){
+  // Als DoorenVeste is gecheckt, maak dan de deelquery, maak anders een lege string
+  if ($doorenCheck) {
+    $doorenQuery = "
+    gebouw = 'Van DoorenVeste'";
+  }else {
+    $doorenQuery = "";
+  }
 
+  // Als OlstToren is gecheckt, maak dan de deelquery, maak anders een lege string
+  if ($olstCheck) {
+    $olstQuery = "
+    gebouw = 'Van OlstToren'";
+  }else {
+    $olstQuery = "";
+  }
+  // Maak array met daarin de waardes van de deelquerys
+  $gebouwArray = array($doorenQuery,$olstQuery);
+
+  // Als Vleugel a is gecheckt, maak dan de deelquery, maak anders een lege string
+  if ($aCheck) {
+    $aQuery = "
+    vleugel = 'A'";
+  }else {
+    $aQuery = "";
+  }
+
+  // Als Vleugel b is gecheckt, maak dan de deelquery, maak anders een lege string
+  if ($bCheck) {
+    $bQuery = "
+    vleugel = 'B'";
+  }else {
+    $bQuery = "";
+  }
+
+  // Als Vleugel c is gecheckt, maak dan de deelquery, maak anders een lege string
+  if ($cCheck) {
+    $cQuery = "
+    vleugel = 'C'";
+  }else {
+    $cQuery = "";
+  }
+
+  // Als Vleugel d is gecheckt, maak dan de deelquery, maak anders een lege string
+  if ($dCheck) {
+    $dQuery = "
+    vleugel = 'D'";
+  }else {
+    $dQuery = "";
+  }
+
+  // Als Vleugel e is gecheckt, maak dan de deelquery, maak anders een lege string
+  if ($eCheck) {
+    $eQuery = "
+    vleugel = 'E'";
+  }else {
+    $eQuery = "";
+  }
+  // Maak array met daarin de waardes van de deelquerys
+  $vleugelArray = array($aQuery,$bQuery,$cQuery,$dQuery,$eQuery,);
+
+  // Maak array met daarin de gemaakte arrays
+  $deelQueryFilter = array($gebouwArray,$vleugelArray);
+
+  // Gebuik dit om te checken hoe de array er uit ziet. breid alles hier boven uit zodat alles in de array komt.
+  echo "<pre>";
+  print_r ($deelQueryFilter);
+  echo "</pre>";
 }
 
+// Check of er een verzoek wordt gedaan om iets uit te voeren: toepassen knop
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Check of het verzoek ook daatwerkelijk van de toepassen knop komt
   if (isset($_POST['filterToepassen'])) {
-      if (!isset($_POST['De Deimten'])) {
-        $deimtenCheck = false;
-      }else {
-        $deimtenCheck = true;
-      }
-      if (!isset($_POST['Van Doorenveste'])) {
+    // Geef waardes aan variabelen om vervolgens te kunnen gebruiken in de functie filterFunc
+      if (!isset($_POST['DoorenVeste'])) {
+
         $doorenCheck = false;
       }else {
         $doorenCheck = true;
       }
-      if (!isset($_POST['Van OlstToren'])) {
+      if (!isset($_POST['OlstToren'])) {
         $olstCheck = false;
       }else {
         $olstCheck = true;
@@ -64,6 +130,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cCheck = false;
       }else {
         $cCheck = true;
+      }
+      if (!isset($_POST['D'])) {
+        $dCheck = false;
+      }else {
+        $dCheck = true;
+      }
+      if (!isset($_POST['E'])) {
+        $eCheck = false;
+      }else {
+        $eCheck = true;
       }
 
       if (!isset($_POST['1'])) {
@@ -97,14 +173,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }else {
         $whiteCheck = true;
       }
+      // Parse alle waardes naar de functie filterFunc
+      filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dCheck,$eCheck,$Check1,$Check2,$Check3,$digiCheck,$stopCheck,$whiteCheck);
   }
 
 //if ($deimtenCheck = true){
 //    echo 'ye';
 //  }
-
-  sendToDB($deimtenCheck,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$Check1,$Check2,$Check3,$digiCheck,$stopCheck,$whiteCheck);
-
 }
 
 ?>

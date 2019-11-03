@@ -1,4 +1,5 @@
 <?php include "../../../../meta.php" ?>
+<?php include "../php/reservering_function.php" ?>
 
 </head>
 <body>
@@ -18,7 +19,9 @@
         <table id="kamerViewTableID">
           <thead>
             <tr>
+              <th>ID</th>
               <th>Kamer</th>
+              <th>Gebouw</th>
               <th>Tijd</th>
               <th>Datum</th>
               <th>E-mail</th>
@@ -26,17 +29,25 @@
             </tr>
           </thead>
           <tbody>
-            <!-- PHP CODE VOOR DATABASE -->
-            <tr>
-              <td>A.214</td>
-              <td>12:00-13:00</td>
-              <td>30-10-2019</td>
-              <td>mail@mail.mail</td>
-              <td>
-                <button type="button" name="wijzig" id="wijzigButton">Wijzigen</button>
-                <button type="button" name="verwijder" id="verwijderButton">Verwijderen</button>
-              </td>
-            </tr>
+            <?php
+              while($record = mysqli_fetch_assoc($sqlGetResResult)){
+                echo "
+                <tr>
+                  <td>{$record['id']}</td>
+                  <td>{$record['vleugel']}.{$record['kamernummer']}</td>
+                  <td>{$record['gebouw']}</td>
+                  <td>{$record['starttijd']}-{$record['eindtijd']}</td>
+                  <td>{$record['reserveringsdatum']}</td>
+                  <td>{$record['email']}</td>
+                  <td>
+                    <form method='post'>
+                      <button type='submit' name='verwijder{$record['id']}' id='verwijderButton'>Verwijderen</button>
+                    </form>
+                  </td>
+                </tr>
+                ";
+              }
+            ?>
           </tbody>
         </table>
       </div>

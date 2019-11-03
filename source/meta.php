@@ -12,7 +12,8 @@
     <!-- Definieer de viewport voor responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php
-      $filePath = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], '/source'), strpos($_SERVER['REQUEST_URI'],"index.php")+9);
+      $link = $_SERVER['REQUEST_URI'];
+      $filePath = substr(substr($link, 0, strpos($link,"/index.php") +10),strpos($link, '/source'),strlen($link));
       // Definieer het file path per pagina, daarna plaatst het de beschrijving van die pagina
       // in het variabele $filePath
        if ($filePath == null) {
