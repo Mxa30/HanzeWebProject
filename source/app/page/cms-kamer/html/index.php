@@ -59,11 +59,11 @@
         <form method="post">
           <table id="kamerInputFormID">
             <tr>
-              <td>Kamer:</td>
+              <td>Kamer: *</td>
               <td><input type="text" name="kamerNr"></td>
             </tr>
             <tr>
-              <td>Gebouw:</td>
+              <td>Gebouw: *</td>
               <td>
                 <select name="gebouw">
                   <?php
@@ -75,7 +75,7 @@
               </td>
             </tr>
             <tr>
-              <td>Vleugel:</td>
+              <td>Vleugel: *</td>
               <td>
                 <select name="vleugel">
                   <?php
@@ -87,7 +87,7 @@
               </td>
             </tr>
             <tr>
-              <td>Verdieping:</td>
+              <td>Verdieping: *</td>
               <td>
                 <select name="verdieping">
                   <?php while($record = mysqli_fetch_assoc($verdiepingOptionResult)){
@@ -97,7 +97,7 @@
               </td>
             </tr>
             <tr>
-              <td>Capaciteit:</td>
+              <td>Capaciteit: *</td>
               <td><input type="number" name="capaciteit" max="450"></td>
             </tr>
             <tr>
@@ -105,7 +105,7 @@
               <td><textarea name="beschrijving"></textarea></td>
             </tr>
             <tr>
-              <td>Kamersoort:</td>
+              <td>Kamersoort: *</td>
               <td>
                 <select name="kamersoort">
                   <?php
@@ -134,7 +134,7 @@
               </td>
             </tr>
             <tr>
-              <td>Zichtbaar:</td>
+              <td>Zichtbaar: *</td>
               <td>
                 <select name="zichtbaar">
                   <?php
@@ -157,6 +157,7 @@
         </form>
         <p id="noticeParID">Als het kamernummer al bestaat in de database zal
           deze worden geüpdate met de nieuwe waarden of worden verwijderd.</p>
+        <p id="noticeParID">* = verplicht</p>
       </div>
     </div>
   </main>
