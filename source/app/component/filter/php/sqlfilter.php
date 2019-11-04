@@ -30,7 +30,7 @@ order by faciliteit";
 $sqlGetOptionFaciliteitResult = mysqli_query($conn, $sqlGetOptionFaciliteitQuery);
 
 // Functie om querys te maken die worden verstuurd naar de database om gefilterde kamers te laten zien.
-function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dCheck,$eCheck,$Check0,$Check1,$Check2,$Check3,$Check4,$digiCheck,$stopCheck,$whiteCheck){
+function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dCheck,$eCheck,$Check0,$Check1,$Check2,$Check3,$Check4,$aantalOne,$aantalTwo,$aantalThree,$aantalFour,$digiCheck,$stopCheck,$whiteCheck){
   // Als DoorenVeste is gecheckt, maak dan de deelquery, maak anders een lege string
   if ($doorenCheck) {
     $doorenQuery = "  (gebouw = 'Van DoorenVeste'";
@@ -170,8 +170,52 @@ function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dChec
     $Query4 = "";
   }
 
+  // if ($) {
+  //   // code...
+  // }
+
   // Maak array met daarin de waardes van de deelquerys
   $verdiepingArray = array($Query0,$Query1,$Query2,$Query3,$Query4);
+
+  if ($aantalOne) {
+    $aantalOneQ = "(kamercapaciteit between 0 and 5";
+  }else {
+    $aantalOneQ = "";
+  }
+
+  if ($aantalOne && $aantalTwo) {
+    $aantalTwoQ = " or kamercapaciteit between 5 and 10";
+  }elseif($aantalTwo){
+    $aantalTwoQ = "(kamercapaciteit between 5 and 10";
+  }else {
+    $aantalTwoQ = "";
+  }
+
+  if ($aantalOne && $aantalTwo && $aantalThree) {
+    $aantalThreeQ = " or kamercapaciteit between 10 and 15";
+  }elseif($aantalOne && $aantalThree){
+    $aantalThreeQ = " or kamercapaciteit between 10 and 15";
+  }elseif($aantalTwo && $aantalThree){
+    $aantalThreeQ = " or kamercapaciteit between 10 and 15";
+  }elseif($aantalThree) {
+    $aantalThreeQ = "(kamercapaciteit between 10 and 15";
+  }else {
+    $aantalThreeQ = "";
+  }
+
+  if ($aantalOne && $aantalTwo && $aantalThree && $aantalFour) {
+    $aantalFourQ = " or kamercapaciteit > 15";
+  }elseif($aantalOne && $aantalFour){
+    $aantalFourQ = " or kamercapaciteit > 15";
+  }elseif($aantalTwo && $aantalFour){
+    $aantalFourQ = " or kamercapaciteit > 15";
+  }elseif($aantalThree && $aantalFour){
+    $aantalFourQ = " or kamercapaciteit > 15";
+  }elseif($aantalFour) {
+    $aantalFourQ = "(kamercapaciteit > 15";
+  }else {
+    $aantalFourQ = "";
+  }
 
   if ($digiCheck) {
     $digiQuery = " (faciliteit = 'digibord'";
@@ -226,22 +270,167 @@ function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dChec
   // }
 
   // Gebruik dit om de where statement te laten zien na alle gegevens te hebben ingevuld.
-  echo 'where';
-  echo $doorenQuery,$olstQuery, ')';
+    // echo 'where';
+    // echo $doorenQuery,$olstQuery, ')';
+    //
+    // echo $aQuery,$bQuery,$cQuery,$dQuery,$eQuery, ')';
+    // if ($aQuery != $bQuery && $bQuery != $cQuery && $cQuery != $dQuery && $dQuery != $eQuery){
+    //   echo ' and';
+    // }
+    // echo $Query0,$Query1,$Query2,$Query3,$Query4, ')';
+    // if ($Query0 != $Query1 && $Query1 != $Query2 && $Query2 != $Query3 && $Query3 != $Query4){
+    //   echo ' and';
+    // }
+    // echo $digiQuery,$stopQuery,$whiteQuery, ')';
+    // if ($digiQuery != $stopQuery && $stopQuery != $whiteQuery){
+    //   echo ' and';
+    // }
+    // echo ';';
 
-  echo $aQuery,$bQuery,$cQuery,$dQuery,$eQuery, ')';
-  if ($aQuery != $bQuery && $bQuery != $cQuery && $cQuery != $dQuery && $dQuery != $eQuery){
-    echo ' and';
+  // Max' code
+  if (!empty($doorenQuery) || !empty($olstQuery)) {
+    echo "where";
+    echo $doorenQuery,$olstQuery, ")";
+    if (!empty($aQuery) || !empty($bQuery) || !empty($cQuery) || !empty($dQuery) || !empty($eQuery)) {
+      echo " and ",$aQuery,$bQuery,$cQuery,$dQuery,$eQuery, ")";
+      if (!empty($Query0) || !empty($Query1) || !empty($Query2) || !empty($Query3) || !empty($Query4)) {
+        echo " and ",$Query0,$Query1,$Query2,$Query3,$Query4, ")";
+        if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
+          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }else {
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }
+      }else {
+        if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
+          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }else {
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }
+      }
+    }else {
+      if (!empty($Query0) || !empty($Query1) || !empty($Query2) || !empty($Query3) || !empty($Query4)) {
+        echo " and ",$Query0,$Query1,$Query2,$Query3,$Query4, ")";
+        if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
+          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }else {
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }
+      }else {
+        if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
+          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }else {
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }
+      }
+    }
+  }else {
+    echo "where";
+    if (!empty($aQuery) || !empty($bQuery) || !empty($cQuery) || !empty($dQuery) || !empty($eQuery)) {
+      echo $aQuery,$bQuery,$cQuery,$dQuery,$eQuery, ")";
+      if (!empty($Query0) || !empty($Query1) || !empty($Query2) || !empty($Query3) || !empty($Query4)) {
+        echo $Query0,$Query1,$Query2,$Query3,$Query4, ")";
+        if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
+          echo $aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo $digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }else {
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }
+      }else {
+        if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
+          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }else {
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }
+      }
+    }else {
+      if (!empty($Query0) || !empty($Query1) || !empty($Query2) || !empty($Query3) || !empty($Query4)) {
+        echo " and ",$Query0,$Query1,$Query2,$Query3,$Query4, ")";
+        if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
+          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }else {
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }
+      }else {
+        if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
+          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }else {
+          if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
+            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+          }else {
+            echo "";
+          }
+        }
+      }
+    }
   }
-  echo $Query0,$Query1,$Query2,$Query3,$Query4, ')';
-  if ($Query0 != $Query1 && $Query1 != $Query2 && $Query2 != $Query3 && $Query3 != $Query4){
-    echo ' and';
-  }
-  echo $digiQuery,$stopQuery,$whiteQuery, ')';
-  if ($digiQuery != $stopQuery && $stopQuery != $whiteQuery){
-    echo ' and';
-  }
-  echo ';';
+
   // Maak array met daarin de gemaakte arrays
   $deelQueryFilter = array($gebouwArray,$vleugelArray,$verdiepingArray,$faciliteitArray);
 
@@ -323,6 +512,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $Check4 = true;
       }
 
+      if (!isset($_POST['0to5'])) {
+        $aantalOne = false;
+      }else {
+        $aantalOne = true;
+      }
+      if (!isset($_POST['5to10'])) {
+        $aantalTwo = false;
+      }else {
+        $aantalTwo = true;
+      }
+      if (!isset($_POST['10to15'])) {
+        $aantalThree = false;
+      }else {
+        $aantalThree = true;
+      }
+      if (!isset($_POST['15plus'])) {
+        $aantalFour = false;
+      }else {
+        $aantalFour = true;
+      }
+
       if (!isset($_POST['digibord'])) {
         $digiCheck = false;
       }else {
@@ -339,7 +549,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $whiteCheck = true;
       }
       // Parse alle waardes naar de functie filterFunc
-      filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dCheck,$eCheck,$Check0,$Check1,$Check2,$Check3,$Check4,$digiCheck,$stopCheck,$whiteCheck);
+      filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dCheck,$eCheck,$Check0,$Check1,$Check2,$Check3,$Check4,$aantalOne,$aantalTwo,$aantalThree,$aantalFour,$digiCheck,$stopCheck,$whiteCheck);
   }
 
 //if ($deimtenCheck = true){

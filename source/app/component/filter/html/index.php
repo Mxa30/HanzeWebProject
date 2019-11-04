@@ -77,12 +77,14 @@
         <div class="overSelect"></div>
       </div>
       <div class="checkboxes">
-        <label for="one">
-          <input type="checkbox" id="one" />0-5</label></br>
-        <label for="two">
-          <input type="checkbox" id="two" />5-10</label></br>
-        <label for="three">
-          <input type="checkbox" id="three" />10-15</label></br>
+        <label>
+          <input type="checkbox" name="0to5" id="one"/>0-5</label></br>
+        <label>
+          <input type="checkbox" name="5to10" id="two"/>5-10</label></br>
+        <label>
+          <input type="checkbox" name="10to15" id="three"/>10-15</label></br>
+        <label>
+          <input type="checkbox" name="15plus" id="three"/>15+</label></br>
       </div>
     </div>
     </br>
