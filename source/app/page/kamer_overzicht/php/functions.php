@@ -37,16 +37,16 @@ $kamerNrLijstResult = mysqli_query($conn, $sqlGetNrListQuery);
 while ($record = mysqli_fetch_assoc($sqlGetroomnrResult)){
   echo $record['kamernummer'];
 
-
+}
   // faciliteit kan zo opgeroepen worden
-
     $kamerFaciliteitLijstResult = mysqli_query($conn, $sqlGetFaciliteitListQuery);
     while ($record = mysqli_fetch_assoc($kamerFaciliteitLijstResult)){
       echo $record['faciliteit'];
-
+}
       // vleugel kan zo opgeroepen worden
+
       $vleugelOptionResult = mysqli_query($conn, $sqlGetOptionVleugelQuery);
       while ($record = mysqli_fetch_assoc($vleugelOptionResult)){
-        echo $record =['vleugel'] ;
-        
+        echo $record['vleugel'];
+      }
  ?>

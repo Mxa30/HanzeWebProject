@@ -1,6 +1,7 @@
 <?php include "../../../../meta.php" ?>
 
 <?php include "../php/functions.php"; ?>
+<?php $filePath = "/source/app/page/kamer_overzicht/html/index.php" ?>
   <?php include (COMPONENT_PATH . "/header/index.php") ?>
 </head>
 <body>
