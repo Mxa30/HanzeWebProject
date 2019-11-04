@@ -34,6 +34,7 @@ function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dChec
   if ($doorenCheck) {
     $doorenQuery = "
     gebouw = 'Van DoorenVeste'";
+    $indexWaardeGebouw=0;
   }else {
     $doorenQuery = "";
   }
@@ -42,16 +43,18 @@ function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dChec
   if ($olstCheck) {
     $olstQuery = "
     gebouw = 'Van OlstToren'";
+    $indexWaardeGebouw=1;
   }else {
     $olstQuery = "";
   }
   // Maak array met daarin de waardes van de deelquerys
-  $gebouwArray = array($doorenQuery,$olstQuery);
+    $gebouwArray = array($doorenQuery,$olstQuery);
 
   // Als Vleugel a is gecheckt, maak dan de deelquery, maak anders een lege string
   if ($aCheck) {
     $aQuery = "
     vleugel = 'A'";
+    $indexWaardeVleugel=0;
   }else {
     $aQuery = "";
   }
@@ -60,6 +63,7 @@ function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dChec
   if ($bCheck) {
     $bQuery = "
     vleugel = 'B'";
+    $indexWaardeVleugel=1;
   }else {
     $bQuery = "";
   }
@@ -68,6 +72,7 @@ function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dChec
   if ($cCheck) {
     $cQuery = "
     vleugel = 'C'";
+    $indexWaardeVleugel=2;
   }else {
     $cQuery = "";
   }
@@ -76,6 +81,7 @@ function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dChec
   if ($dCheck) {
     $dQuery = "
     vleugel = 'D'";
+    $indexWaardeVleugel=3;
   }else {
     $dQuery = "";
   }
@@ -84,6 +90,7 @@ function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dChec
   if ($eCheck) {
     $eQuery = "
     vleugel = 'E'";
+    $indexWaardeVleugel=4;
   }else {
     $eQuery = "";
   }
@@ -92,7 +99,7 @@ function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dChec
 
   // Maak array met daarin de gemaakte arrays
   $deelQueryFilter = array($gebouwArray,$vleugelArray);
-
+  echo $vleugelArray[$indexWaardeVleugel];
   // Gebuik dit om te checken hoe de array er uit ziet. breid alles hier boven uit zodat alles in de array komt.
   echo "<pre>";
   print_r ($deelQueryFilter);
