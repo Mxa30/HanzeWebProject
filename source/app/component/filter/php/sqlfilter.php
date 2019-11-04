@@ -60,46 +60,96 @@ function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dChec
   }
 
   // Als Vleugel b is gecheckt, maak dan de deelquery, maak anders een lege string
-  if ($bCheck) {
+  if ($aCheck && $bCheck) {
+    $bQuery = "
+    and vleugel = 'B'";
+    $indexWaardeVleugel=1;
+  } elseif($bCheck) {
     $bQuery = "
     vleugel = 'B'";
     $indexWaardeVleugel=1;
-  }else {
+  } else {
     $bQuery = "";
   }
 
   // Als Vleugel c is gecheckt, maak dan de deelquery, maak anders een lege string
-  if ($cCheck) {
+  if ($aCheck && $bCheck && $cCheck) {
+    $cQuery = "
+    and vleugel = 'C'";
+    $indexWaardeVleugel=2;
+  }elseif($aCheck && $cCheck) {
+    $cQuery = "
+    and vleugel = 'C'";
+    $indexWaardeVleugel=2;
+  }elseif($bCheck && $cCheck) {
+    $cQuery = "
+    and vleugel = 'C'";
+    $indexWaardeVleugel=2;
+  }elseif($cCheck){
     $cQuery = "
     vleugel = 'C'";
-    $indexWaardeVleugel=2;
   }else {
     $cQuery = "";
   }
 
   // Als Vleugel d is gecheckt, maak dan de deelquery, maak anders een lege string
-  if ($dCheck) {
+  if ($aCheck && $bCheck && $cCheck && $dCheck) {
+    $dQuery = "
+    and vleugel = 'D'";
+    $indexWaardeVleugel=3;
+  }elseif($aCheck && $dCheck) {
+    $dQuery = "
+    and vleugel = 'D'";
+    $indexWaardeVleugel=2;
+  }elseif($bCheck && $dCheck) {
+    $dQuery = "
+    and vleugel = 'D'";
+    $indexWaardeVleugel=2;
+  }elseif($cCheck && $dCheck) {
+    $dQuery = "
+    and vleugel = 'D'";
+    $indexWaardeVleugel=2;
+  }elseif($dCheck){
     $dQuery = "
     vleugel = 'D'";
-    $indexWaardeVleugel=3;
   }else {
     $dQuery = "";
   }
 
   // Als Vleugel e is gecheckt, maak dan de deelquery, maak anders een lege string
-  if ($eCheck) {
+  if ($aCheck && $bCheck && $cCheck && $dCheck && $eCheck) {
+    $eQuery = "
+    and vleugel = 'E'";
+    $indexWaardeVleugel=3;
+  }elseif($aCheck && $eCheck) {
+    $eQuery = "
+    and vleugel = 'E'";
+    $indexWaardeVleugel=2;
+  }elseif($bCheck && $eCheck) {
+    $eQuery = "
+    and vleugel = 'E'";
+    $indexWaardeVleugel=2;
+  }elseif($cCheck && $eCheck) {
+    $eQuery = "
+    and vleugel = 'E'";
+    $indexWaardeVleugel=2;
+  }elseif($dCheck && $eCheck) {
+    $eQuery = "
+    and vleugel = 'E'";
+    $indexWaardeVleugel=2;
+  }elseif($eCheck){
     $eQuery = "
     vleugel = 'E'";
-    $indexWaardeVleugel=4;
   }else {
     $eQuery = "";
   }
+
   // Maak array met daarin de waardes van de deelquerys
   $vleugelArray = array($aQuery,$bQuery,$cQuery,$dQuery,$eQuery,);
-
+  echo 'where', $aQuery, $bQuery, $cQuery, $dQuery, $eQuery, ';';
   // Maak array met daarin de gemaakte arrays
   $deelQueryFilter = array($gebouwArray,$vleugelArray);
-  echo $vleugelArray[$indexWaardeVleugel];
+
   // Gebuik dit om te checken hoe de array er uit ziet. breid alles hier boven uit zodat alles in de array komt.
   echo "<pre>";
   print_r ($deelQueryFilter);
