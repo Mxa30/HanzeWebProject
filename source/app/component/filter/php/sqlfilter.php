@@ -287,150 +287,153 @@ function filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dChec
     // }
     // echo ';';
 
+$filterQuery = "";
+
   // Max' code
   if (!empty($doorenQuery) || !empty($olstQuery)) {
-    echo "where";
-    echo $doorenQuery,$olstQuery, ")";
+    $filterQuery .= "where";
+    $filterQuery .= $doorenQuery.$olstQuery. ")";
     if (!empty($aQuery) || !empty($bQuery) || !empty($cQuery) || !empty($dQuery) || !empty($eQuery)) {
-      echo " and ",$aQuery,$bQuery,$cQuery,$dQuery,$eQuery, ")";
+      $filterQuery .= " and ".$aQuery.$bQuery.$cQuery.$dQuery.$eQuery. ")";
       if (!empty($Query0) || !empty($Query1) || !empty($Query2) || !empty($Query3) || !empty($Query4)) {
-        echo " and ",$Query0,$Query1,$Query2,$Query3,$Query4, ")";
+        $filterQuery .= " and ".$Query0.$Query1.$Query2.$Query3.$Query4. ")";
         if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
-          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          $filterQuery .= " and ".$aantalOneQ.$aantalTwoQ.$aantalThreeQ.$aantalFourQ. ")";
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }else {
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }
       }else {
         if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
-          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          $filterQuery .= " and ".$aantalOneQ.$aantalTwoQ.$aantalThreeQ.$aantalFourQ. ")";
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }else {
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }
       }
     }else {
       if (!empty($Query0) || !empty($Query1) || !empty($Query2) || !empty($Query3) || !empty($Query4)) {
-        echo " and ",$Query0,$Query1,$Query2,$Query3,$Query4, ")";
+        $filterQuery .= " and ".$Query0.$Query1.$Query2.$Query3.$Query4. ")";
         if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
-          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          $filterQuery .= " and ".$aantalOneQ.$aantalTwoQ.$aantalThreeQ.$aantalFourQ. ")";
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }else {
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }
       }else {
         if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
-          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          $filterQuery .= " and ".$aantalOneQ.$aantalTwoQ.$aantalThreeQ.$aantalFourQ. ")";
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }else {
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }
       }
     }
   }else {
-    echo "where";
+    $filterQuery .= "where";
     if (!empty($aQuery) || !empty($bQuery) || !empty($cQuery) || !empty($dQuery) || !empty($eQuery)) {
-      echo $aQuery,$bQuery,$cQuery,$dQuery,$eQuery, ")";
+      $filterQuery .= $aQuery.$bQuery.$cQuery.$dQuery.$eQuery. ")";
       if (!empty($Query0) || !empty($Query1) || !empty($Query2) || !empty($Query3) || !empty($Query4)) {
-        echo $Query0,$Query1,$Query2,$Query3,$Query4, ")";
+        $filterQuery .= $Query0.$Query1.$Query2.$Query3.$Query4. ")";
         if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
-          echo $aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          $filterQuery .= $aantalOneQ.$aantalTwoQ.$aantalThreeQ.$aantalFourQ. ")";
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo $digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= $digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }else {
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }
       }else {
         if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
-          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          $filterQuery .= " and ".$aantalOneQ.$aantalTwoQ.$aantalThreeQ.$aantalFourQ. ")";
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }else {
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }
       }
     }else {
       if (!empty($Query0) || !empty($Query1) || !empty($Query2) || !empty($Query3) || !empty($Query4)) {
-        echo " and ",$Query0,$Query1,$Query2,$Query3,$Query4, ")";
+        $filterQuery .= " and ".$Query0.$Query1.$Query2.$Query3.$Query4. ")";
         if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
-          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          $filterQuery .= " and ".$aantalOneQ.$aantalTwoQ.$aantalThreeQ.$aantalFourQ. ")";
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }else {
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }
       }else {
         if (!empty($aantalOneQ) || !empty($aantalTwoQ) || !empty($aantalThreeQ) || !empty($aantalFourQ)) {
-          echo " and ",$aantalOneQ,$aantalTwoQ,$aantalThreeQ,$aantalFourQ, ")";
+          $filterQuery .= " and ".$aantalOneQ.$aantalTwoQ.$aantalThreeQ.$aantalFourQ. ")";
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }else {
           if (!empty($digiQuery) || !empty($stopQuery) || !empty($whiteQuery)) {
-            echo " and ",$digiQuery,$stopQuery,$whiteQuery, ")";
+            $filterQuery .= " and ".$digiQuery.$stopQuery.$whiteQuery. ")";
           }else {
-            echo "";
+            $filterQuery .= "";
           }
         }
       }
     }
   }
 
+  return $filterQuery;
   // Maak array met daarin de gemaakte arrays
   $deelQueryFilter = array($gebouwArray,$vleugelArray,$verdiepingArray,$faciliteitArray);
 
