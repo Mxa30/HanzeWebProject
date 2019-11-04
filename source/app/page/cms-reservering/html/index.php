@@ -1,5 +1,7 @@
-<?php include "../../../../meta.php" ?>
-<?php include "../php/reservering_function.php" ?>
+<?php include "../../../../meta.php";
+      include "../php/search.php";
+      include "../php/reservering_function.php";
+?>
 
 </head>
 <body>
@@ -8,9 +10,9 @@
     <div id="kamerLijstID">
       <div class="kamerHead">
          <h2>Reserveringen</h2>
-         <form id="searchFormID">
-           <input type="text" name="search" placeholder="Zoeken" id="searchInputID">
-           <button type="submit" name="submit" id="searchButtonID">
+         <form id="searchFormID" method="post">
+           <input type="text" name="searchResId" placeholder="Zoeken op id" id="searchInputID">
+           <button type="submit" name="submitResId" id="searchButtonID">
              <img src="<?php echo ASSET_PATH ?>/search.png" alt="search" id="searchIconID">
           </button>
          </form>

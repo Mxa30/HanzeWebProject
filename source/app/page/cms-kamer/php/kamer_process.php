@@ -3,7 +3,7 @@
   $sqlGetListQuery = "
   select R.kamernummer, R.gebouw, G.adres, R.vleugel, R.verdieping, R.kamercapaciteit, R.faciliteit, R.kamersoort, R.beschrijving, R.zichtbaar
   from ruimte R, gebouw G
-  where R.gebouw = G.gebouw
+  where R.gebouw = G.gebouw {$searchKamerVal}
   order by kamernummer, faciliteit;";
 
   // Query voor het verkrijgen van alle kamaernummers

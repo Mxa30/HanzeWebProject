@@ -1,4 +1,5 @@
 <?php include "../../../../meta.php";
+      include '../php/search.php';
       include "../php/kamer_process.php";
 ?>
 
@@ -9,9 +10,9 @@
     <div id="kamerLijstID">
       <div class="kamerHead">
          <h2>Kamer lijst</h2>
-         <form id="searchFormID">
-           <input type="text" name="search" placeholder="Zoeken" id="searchInputID">
-           <button type="submit" name="submit" id="searchButtonID">
+         <form id="searchFormID" method="post">
+           <input type="number" name="searchKamer" placeholder="Zoeken op kamer" id="searchInputID">
+           <button type="submit" name="searchKamerSubmit" id="searchButtonID">
              <img src="<?php echo ASSET_PATH ?>/search.png" alt="search" id="searchIconID">
           </button>
          </form>
