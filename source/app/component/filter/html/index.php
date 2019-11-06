@@ -1,5 +1,3 @@
-<?php include "../../../../meta.php" ?>
-
 <?php include "../php/sqlfilter.php" ?>
 
 <div class="filterFormContain">
