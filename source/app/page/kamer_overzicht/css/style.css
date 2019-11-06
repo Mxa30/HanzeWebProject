@@ -4,21 +4,33 @@
 
 .overzicht_container{
   width: 100%;
-  height: 80%;
+  height: 560px;
   overflow-y: scroll;
 }
 
+.overzicht_left_container{
+  width: 290px;
+}
+
 .overzichtTabel_container{
-  background-color: #fff;
   padding: 15px 10px;
   border-radius: 20px;
+  height: auto;
+}
+
+.headTable{
+  height: auto;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
 .overzicht_main{
   width: 65vw;
   display: inline-block;
   float: right;
-  height: 100%;
+  height: 620px;
   background-color: #F2F2F2;
   padding: 15px 10px;
   border-radius: 20px;
@@ -36,11 +48,16 @@ main {
   background-color: #2929CC;
   border-style: none;
   border-radius: 50px;
+  margin-bottom: 5px;
   color: #fff;
 }
 
 .overzicht_button_td{
   text-align: center;
+}
+
+.overzicht_button_button:hover{
+  background-color: #3B488C;
 }
 
 .overzicht_img{
@@ -62,7 +79,7 @@ main {
   font-size: .95em;
   border: none;
   appearance: none;
-  background: hsla(0, 0%, 100%, 0)
+  background: hsla(0, 0%, 100%, 0);
 }
 
 .overSelect {
@@ -88,9 +105,9 @@ main {
 
 .filterFormContain {
   width: 270px;
-  height: auto;
+  height: 640px;
   background-color: #F2F2F2;
-  padding: 15px 10px;
+  padding: 5px 10px;
   border-radius: 20px;
   display: inline-block;
 }
