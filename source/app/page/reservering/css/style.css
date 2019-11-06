@@ -1,0 +1,107 @@
+hr{
+  margin-right: 10px;
+  margin-bottom: 1px;
+  }
+.body{
+  width:100%;
+}
+main{
+  overflow: auto;
+  height: 90vh;
+  width: 95vw;
+}
+p{
+  margin: 0px;
+}
+.master{
+  width: 70vw;
+  height: auto;
+  position: relative;
+  float: right;
+  background-color: #808080
+}
+.beschrijvingContainer{
+  position: relative;
+  display: inline-block;
+  width: 45%;
+  height:450px;
+  margin-right: 10%;
+  background-color: #f2f2f2;
+  }
+  .Reserveringssysteem{
+    position: absolute;
+    display: inline-block;
+    right: 0px;
+    width: 45%;
+    height:450px;
+    background-color: #f2f2f2;
+  }
+.checkbox-div{
+  width:50px;
+}
+.checkbox-half{
+  position: static;
+  width: 50%;
+  float:left;
+  height:auto;
+  margin:1px;
+}
+#submitButtonID{
+  padding: 0 30px;
+  height: 30px;
+  background-color: #2929CC;
+  border-style: none;
+  border-radius: 50px;
+  color: #fff;
+}
+.tijdstipContainer{
+  width: 100%;
+  display: block;
+  height: auto;
+}
+.tijden{
+display: inline-block;
+}
+.timeTableContain{
+    position: relative;
+    width: 100%;
+    height:auto;
+    background-color: #f2f2f2
+  }
+.timeGraph{
+  width: 100%;
+  overflow-x: scroll;
+  position: relative;
+  height: 125px;
+}
+.timeoverlay{
+  width: 3300px;
+  position: absolute;
+}
+.lineoverlay{
+  width: 3400px;
+  position: absolute;
+}
+.timeoverlay li{
+  display: inline-block;
+  margin: 0 49px 0 50px;
+  text-align: center;
+  position: relative;
+}
+.lineoverlay li{
+  display: inline-block;
+  margin: 0 50px 0 50px;
+  text-align: center;
+  position: relative;
+  visibility: hidden;
+}
+.line{
+  width: 1px;
+  height: 100px;
+  background-color: #000;
+  position: absolute;
+  left: 50%;
+}
+.image{
+  float: right;
+}
