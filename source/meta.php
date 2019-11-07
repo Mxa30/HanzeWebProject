@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php
+  if (session_status() == '') {
+    session_start();
+  }
   // Include de default paths
   include "../../../../defaultpaths.php";
   // Include de database in elke pagina

@@ -621,6 +621,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       order by gebouw, vleugel, kamernummer;";
       $sqlGetroomnrResult = mysqli_query($conn, $sqlGetroomnrQuery);
   }
+  else {
+    $sqlGetroomnrQuery = "
+    select distinct kamernummer, gebouw, vleugel
+    from ruimte
+    order by gebouw, vleugel, kamernummer;";
+    $sqlGetroomnrResult = mysqli_query($conn, $sqlGetroomnrQuery);
+  }
+
+  $sqlGetWhileInfo = "
+  select distinct kamernummer, gebouw
+  from ruimte
+  order by gebouw, kamernummer;";
+  $sqlGetWhileInfoResult = mysqli_query($conn, $sqlGetWhileInfo);
+  while($record = mysqli_fetch_assoc($sqlGetWhileInfoResult)){
+    $gebouwVal = substr($record['gebouw'], strpos($record['gebouw'],"Van ")+4, strlen($record['gebouw']));
+
+    // Validate which button was pressed
+    if (isset($_POST['button' . $record['kamernummer'] . "-" . $gebouwVal])){
+      // Set sessions and redirect to reservering pagina
+      $_SESSION['reserveerVal'] = $record['kamernummer']."-".$gebouwVal;
+      $redirectlocation = PAGE_PATH . "/reservering/html/index.php";
+      header("location: {$redirectlocation}");
+  		exit;
+    }
+  }
 }else {
   $sqlGetroomnrQuery = "
   select distinct kamernummer, gebouw, vleugel

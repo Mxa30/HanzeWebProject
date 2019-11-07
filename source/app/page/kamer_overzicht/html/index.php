@@ -21,8 +21,10 @@
           while ($record = mysqli_fetch_assoc($sqlGetroomnrResult)){
             if ($record['gebouw'] == "Van DoorenVeste") {
               $imgLink = ASSET_PATH . "/afbeelding_vanDoorenveste.jpg";
+              $gebouwVal = substr($record['gebouw'], strpos($record['gebouw'],"Van ")+4, strlen($record['gebouw']));
             }elseif ($record['gebouw'] == "Van OlstToren") {
               $imgLink = ASSET_PATH . "/afbeelding_vanOlsttoren.jpg";
+              $gebouwVal = substr($record['gebouw'], strpos($record['gebouw'],"Van ")+4, strlen($record['gebouw']));
             }
             echo "
             <table class='headTable'>
@@ -36,7 +38,7 @@
                     <td class= 'overzicht_informatie'>Kamer: {$record['vleugel']}.{$record['kamernummer']} Locatie: {$record['gebouw']}</td>
                   </tr class= 'overzicht_button_container'>
                   <tr class= 'overzicht_button'>
-                    <td class='overzicht_button_td'><button class= 'overzicht_button_button' type='submit' name='button'>Meer informatie</button></td>
+                    <td class='overzicht_button_td'><form method='post'><button class='overzicht_button_button' type='submit' name='button{$record['kamernummer']}-{$gebouwVal}'>Meer informatie</button></form></td>
                   </tr>
                 </table>
               </td>
