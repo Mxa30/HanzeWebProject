@@ -638,12 +638,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gebouwVal = substr($record['gebouw'], strpos($record['gebouw'],"Van ")+4, strlen($record['gebouw']));
 
     // Validate which button was pressed
+
     if (isset($_POST['button' . $record['kamernummer'] . "-" . $gebouwVal])){
-      // Set sessions and redirect to reservering pagina
-      $_SESSION['reserveerVal'] = $record['kamernummer']."-".$gebouwVal;
-      $redirectlocation = PAGE_PATH . "/reservering/html/index.php";
-      header("location: {$redirectlocation}");
-  		exit;
+      if (empty($_POST['date'])) {
+        $errorCode = "U moet eerst een datum invullen.";
+      }else {
+        // Set sessions and redirect to reservering pagina
+        $_SESSION['reserveerVal'] = $record['kamernummer']."-".$gebouwVal;
+        $_SESSION['datum'] = $_POST['date'];
+        $redirectlocation = PAGE_PATH . "/reservering/html/index.php";
+        header("location: {$redirectlocation}");
+      	exit;
+      }
     }
   }
 }else {

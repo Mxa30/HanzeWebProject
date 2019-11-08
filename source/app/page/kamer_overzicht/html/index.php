@@ -7,9 +7,15 @@
   <?php include COMPONENT_PATH . "/filter/html/index.php" ?>
   <?php //include "../php/functions.php"; ?>
   <div class="overzicht_main">
+    <form method="post">
       <!-- FUNCTIE maken om de datum te veranderen-->
     <div class="date">
-    <p>Date: <input type="date" id="datepicker"></p>
+    <p>Date: <input type="date" name="date" id="datepicker"></p>
+    <?php
+    if (isset($errorCode)) {
+      echo $errorCode;
+    }
+    ?>
     </div>
 
     <!-- foto's van de kamers erin toevoegen -->
@@ -38,7 +44,7 @@
                     <td class= 'overzicht_informatie'>Kamer: {$record['vleugel']}.{$record['kamernummer']} Locatie: {$record['gebouw']}</td>
                   </tr class= 'overzicht_button_container'>
                   <tr class= 'overzicht_button'>
-                    <td class='overzicht_button_td'><form method='post'><button class='overzicht_button_button' type='submit' name='button{$record['kamernummer']}-{$gebouwVal}'>Meer informatie</button></form></td>
+                    <td class='overzicht_button_td'><button class='overzicht_button_button' type='submit' name='button{$record['kamernummer']}-{$gebouwVal}'>Meer informatie</button></td>
                   </tr>
                 </table>
               </td>
@@ -51,9 +57,10 @@
             </table>";
           }
           ?>
+        </div>
       </div>
-    </div>
-  </main>
-</div>
+    </form>
+  </div>
+</main>
 
 </body>

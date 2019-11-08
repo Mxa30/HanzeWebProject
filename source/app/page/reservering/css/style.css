@@ -2,9 +2,11 @@ hr{
   margin-right: 10px;
   margin-bottom: 1px;
   }
-.body{
-  width:100%;
+
+h3{
+  margin: 0px;
 }
+
 main{
   overflow: auto;
   height: 90vh;
@@ -18,24 +20,40 @@ p{
   height: auto;
   position: relative;
   float: right;
-  background-color: #808080
+  background-color: #F2F2F2;
+  padding: 20px;
+  border-radius: 15px;
 }
 .beschrijvingContainer{
   position: relative;
   display: inline-block;
+  width: 500px;
+  height:335px;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.infoContainerData{
+  width: auto;
+}
+
+.dataTableContain{
+  width: 255px;
+  display: inline-block;
+}
+
+.Reserveringssysteem{
+  position: absolute;
+  display: inline-block;
+  right: 20px;
   width: 45%;
-  height:450px;
-  margin-right: 10%;
-  background-color: #f2f2f2;
-  }
-  .Reserveringssysteem{
-    position: absolute;
-    display: inline-block;
-    right: 0px;
-    width: 45%;
-    height:450px;
-    background-color: #f2f2f2;
-  }
+  height:335px;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
 .checkbox-div{
   width:50px;
 }
@@ -64,44 +82,122 @@ display: inline-block;
 }
 .timeTableContain{
     position: relative;
-    width: 100%;
+    width: calc(100% - 10px);
     height:auto;
-    background-color: #f2f2f2
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 15px;
   }
-.timeGraph{
-  width: 100%;
+.timeGraphContain{
+  width: 95%;
   overflow-x: scroll;
   position: relative;
-  height: 125px;
+  margin: 0 auto;
+  height: 170px;
 }
-.timeoverlay{
-  width: 3300px;
-  position: absolute;
+.timeGraph{
+  margin-top: 5px;
+  width: 1500px;
+  height: auto;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
-.lineoverlay{
-  width: 3400px;
-  position: absolute;
-}
-.timeoverlay li{
-  display: inline-block;
-  margin: 0 49px 0 50px;
-  text-align: center;
+.lineContainer td{
   position: relative;
+  border-bottom: 1px solid #000;
 }
-.lineoverlay li{
-  display: inline-block;
-  margin: 0 50px 0 50px;
+.timeContainer td{
   text-align: center;
-  position: relative;
-  visibility: hidden;
 }
 .line{
   width: 1px;
-  height: 100px;
+  height: 120px;
   background-color: #000;
-  position: absolute;
+  position: relative;
+  transform: translateX(-50%);
   left: 50%;
 }
+/* TIMEFRAME */
+.timeFrame{
+  width: calc(100% + 1px);
+  height: 50%;
+  background-color: #00AA28;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 50%;
+}
+
+.lineContainer td:first-child .timeFrame{
+  width: calc(50% + 1px);
+  transform: translate(0%,-50%);
+  left: 50%;
+  top: 50%;
+}
+
+.lineContainer td:last-child .timeFrame{
+  width: calc(50% + 1px);
+  transform: translate(0%,-50%);
+  left: calc(0% - 1px);
+  top: 50%;
+}
+
+/* RED TIMEFRAME FIRST HALF HOUR */
+.timeFrameRedL{
+  width: calc(50% + 2px);
+  height: 50%;
+  position: absolute;
+  transform: translate(0%,-50%);
+  left: 50%;
+  top: 50%;
+}
+
+.lineContainer td:first-child .timeFrameRedL{
+  width: calc(50% + 1px);
+  transform: translate(0%,-50%);
+  left: 50%;
+  top: 50%;
+}
+
+.lineContainer td:last-child .timeFrameRedL{
+  width: calc(50% + 2px);
+  transform: translate(0%,-50%);
+  left: calc(0% - 1px);
+  top: 50%;
+}
+
+/* RED TIMEFRAME LAST HALF HOUR */
+.timeFrameRedR{
+  width: calc(50% + 2px);
+  height: 50%;
+  position: absolute;
+  transform: translate(0%,-50%);
+  left: calc(100% - 1px);
+  top: 50%;
+  z-index: 1000;
+}
+
+.lineContainer td:first-child .timeFrameRedR{
+  width: calc(50% + 1px);
+  transform: translate(0%,-50%);
+  left: calc(100% - 1px);
+  top: 50%;
+}
+
+.lineContainer td:last-child .timeFrameRedR{
+  width: calc(50% + 2px);
+  transform: translate(0%,-50%);
+  left: calc(0% - 1px);
+  top: 50%;
+}
+
+.active{
+  background-color: #BE0000;
+}
+
 .image{
   float: right;
+  margin-right: 10px;
+  margin-top: 7px;
 }
