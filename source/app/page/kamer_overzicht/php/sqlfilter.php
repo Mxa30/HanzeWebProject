@@ -614,17 +614,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
       // Parse alle waardes naar de functie filterFunc
       $filters = filterFunc($conn,$doorenCheck,$olstCheck,$aCheck,$bCheck,$cCheck,$dCheck,$eCheck,$Check0,$Check1,$Check2,$Check3,$Check4,$aantalOne,$aantalTwo,$aantalThree,$aantalFour,$digiCheck,$stopCheck,$whiteCheck);
-      $sqlGetroomnrQuery = "
-      select distinct kamernummer, gebouw, vleugel
-      from ruimte
-      $filters
-      order by gebouw, vleugel, kamernummer;";
+      if (!empty($filters)) {
+        $sqlGetroomnrQuery = "
+        select distinct kamernummer, gebouw, vleugel
+        from ruimte
+        $filters and (zichtbaar = 'true')
+        order by gebouw, vleugel, kamernummer;";
+      }else {
+        $sqlGetroomnrQuery = "
+        select distinct kamernummer, gebouw, vleugel
+        from ruimte
+        where (zichtbaar = 'true')
+        order by gebouw, vleugel, kamernummer;";
+      }
+
       $sqlGetroomnrResult = mysqli_query($conn, $sqlGetroomnrQuery);
   }
   else {
     $sqlGetroomnrQuery = "
     select distinct kamernummer, gebouw, vleugel
     from ruimte
+    where zichtbaar = 'true'
     order by gebouw, vleugel, kamernummer;";
     $sqlGetroomnrResult = mysqli_query($conn, $sqlGetroomnrQuery);
   }
@@ -632,6 +642,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $sqlGetWhileInfo = "
   select distinct kamernummer, gebouw
   from ruimte
+  where zichtbaar = 'true'
   order by gebouw, kamernummer;";
   $sqlGetWhileInfoResult = mysqli_query($conn, $sqlGetWhileInfo);
   while($record = mysqli_fetch_assoc($sqlGetWhileInfoResult)){
@@ -656,6 +667,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $sqlGetroomnrQuery = "
   select distinct kamernummer, gebouw, vleugel
   from ruimte
+  where zichtbaar = 'true'
   order by gebouw, vleugel, kamernummer;";
   $sqlGetroomnrResult = mysqli_query($conn, $sqlGetroomnrQuery);
 }
