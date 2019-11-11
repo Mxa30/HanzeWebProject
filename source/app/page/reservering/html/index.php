@@ -129,77 +129,103 @@
           </div>
         </div>
       </div>
-      <div class="Reserveringssysteem">
+      <?php
+        function maaktijd($cijfers) {
+          return  substr($cijfers, 0,2). ":" .substr($cijfers, 2,2). ":00";
+      };
+       ?>
+      <form class="Reserveringssysteem" action="index.php" method="post">
+        <?php
+        include "../php/reserveringFunction.php";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $ok = TRUE;
+          if ((int)($_POST["startTime"]) >= (int)($_POST["endTime"])) {
+            $ok = FALSE;
+          }
+          if ($ok and (isset($timesArrayA))) {
+            foreach ($timesArrayA as $blok) {
+              if (!(((int)($_POST["endTime"])) <= $blok[0] or ((int)($_POST["startTime"])) >= $blok[1])) {
+                $ok = FALSE;
+
+              }
+            }
+          }
+          // $email = $_SESSION['email'];
+          if (isset($_SESSION['email'])) {
+            $email = $_SESSION['email'];
+            
+            $row['kamernummer'] = (int)$row['kamernummer'];
+            if ($ok) {
+                $eindtijdDef = maaktijd($_POST['endTime']);
+                $beginTijdDef = maaktijd($_POST['startTime']);
+                $stmt = $conn->prepare("INSERT INTO reservering (email, kamernummer, gebouw, starttijd, eindtijd, reserveringsdatum)VALUES (?, ?, ?,?,?,?)");
+                $stmt->bind_param("sissss", $email, $row['kamernummer'], $row['gebouw'], $beginTijdDef, $eindtijdDef, $_SESSION['datum']);
+                $stmt->execute();
+            }
+            else {
+              echo "Tijden niet beschikbaar!";
+            }
+          }
+        }
+         ?>
         <h3>reservering</h3>
         <hr class="hr">
         <p class="tijden">Tijd: van </p>
-        <select class="tijd" name="">
-            <option value="">08:30</option>
-            <option value="">09:00</option>
-            <option value="">09:30</option>
-            <option value="">10:00</option>
-            <option value="">10:30</option>
-            <option value="">11:00</option>
-            <option value="">11:30</option>
-            <option value="">12:00</option>
-            <option value="">12:30</option>
-            <option value="">13:00</option>
-            <option value="">13:30</option>
-            <option value="">14:00</option>
-            <option value="">14:30</option>
-            <option value="">15:00</option>
-            <option value="">15:30</option>
-            <option value="">16:00</option>
-            <option value="">16:30</option>
-            <option value="">17:00</option>
-            <option value="">17:30</option>
-            <option value="">18:00</option>
-            <option value="">18:30</option>
-            <option value="">19:00</option>
+        <select class="tijd" name="startTime">
+            <option value="0830">08:30</option>
+            <option value="0900">09:00</option>
+            <option value="0930">09:30</option>
+            <option value="1000">10:00</option>
+            <option value="1030">10:30</option>
+            <option value="1100">11:00</option>
+            <option value="1130">11:30</option>
+            <option value="1200">12:00</option>
+            <option value="1230">12:30</option>
+            <option value="1300">13:00</option>
+            <option value="1330">13:30</option>
+            <option value="1400">14:00</option>
+            <option value="1430">14:30</option>
+            <option value="1500">15:00</option>
+            <option value="1530">15:30</option>
+            <option value="1600">16:00</option>
+            <option value="1630">16:30</option>
+            <option value="1700">17:00</option>
+            <option value="1730">17:30</option>
+            <option value="1800">18:00</option>
+            <option value="1830">18:30</option>
+            <option value="1900">19:00</option>
           </select>
         <p class="tijden">Tot </p>
-        <select class="tijd" name="">
-            <option value="">08:30</option>
-            <option value="">09:00</option>
-            <option value="">09:30</option>
-            <option value="">10:00</option>
-            <option value="">10:30</option>
-            <option value="">11:00</option>
-            <option value="">11:30</option>
-            <option value="">12:00</option>
-            <option value="">12:30</option>
-            <option value="">13:00</option>
-            <option value="">13:30</option>
-            <option value="">14:00</option>
-            <option value="">14:30</option>
-            <option value="">15:00</option>
-            <option value="">15:30</option>
-            <option value="">16:00</option>
-            <option value="">16:30</option>
-            <option value="">17:00</option>
-            <option value="">17:30</option>
-            <option value="">18:00</option>
-            <option value="">18:30</option>
-            <option value="">19:00</option>
+        <select class="tijd" name="endTime">
+          <option value="0830">08:30</option>
+          <option value="0900">09:00</option>
+          <option value="0930">09:30</option>
+          <option value="1000">10:00</option>
+          <option value="1030">10:30</option>
+          <option value="1100">11:00</option>
+          <option value="1130">11:30</option>
+          <option value="1200">12:00</option>
+          <option value="1230">12:30</option>
+          <option value="1300">13:00</option>
+          <option value="1330">13:30</option>
+          <option value="1400">14:00</option>
+          <option value="1430">14:30</option>
+          <option value="1500">15:00</option>
+          <option value="1530">15:30</option>
+          <option value="1600">16:00</option>
+          <option value="1630">16:30</option>
+          <option value="1700">17:00</option>
+          <option value="1730">17:30</option>
+          <option value="1800">18:00</option>
+          <option value="1830">18:30</option>
+          <option value="1900">19:00</option>
           </select>
         <br>
-        <p class="tijden">Datum</p>
-        <input type="date" name="Datum" value="">
-        <br>
         <button id="submitButtonID" type="submit" name="Reserveren">Reserveren</button>
-      </div>
+    </form>
       <div class="timeTableContain">
         <h3>Tijden</h3>
         <hr class="hr">
-        <?php
-          $sqlGetTimesQuery = "
-          select starttijd, eindtijd
-          from reservering
-          where kamernummer='{$row['kamernummer']}' and gebouw='{$row['gebouw']}' and reserveringsdatum='{$_SESSION['datum']}';";
-
-          $sqlGetTimesResult = mysqli_query($conn, $sqlGetTimesQuery);
-
-        ?>
         <div class="timeGraphContain">
           <?php
           include "../php/timeGraphFunction.php";
@@ -214,6 +240,9 @@
                 <div class="timeFrame"></div>
                 <div class="timeFrameRedL
                 <?php
+                echo "<pre>";
+                print_r($timesArray);
+                echo "</pre>";
                 for ($i=0; $i < count($timesArray); $i++) {
                   if (in_array(800, range($timesArray[$i][0],$timesArray[$i][1])) && in_array(830, range($timesArray[$i][0],$timesArray[$i][1]))) {
                     echo "active";
