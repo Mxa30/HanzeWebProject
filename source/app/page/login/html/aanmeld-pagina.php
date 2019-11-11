@@ -1,28 +1,22 @@
-<!DOCTYPE html>
-<html lang="" dir="ltr">
-  <head>
-    <?php
-    include "../../../../meta.php";
-    include "../../login/html/login-functions.php";
-    ?>
-    <meta charset="utf-8">
-    <title>hoi</title>
+<?php
+include "../../../../meta.php";
+include "../../login/html/login-functions.php";
+ ?>
+</head>
+<body>
+<?php include (COMPONENT_PATH . "/header/index.php"); ?>
+<main>
+  <form action="login-functions.php" method="post">
+    <h3>Aanmelden</h3>
 
-  </head>
-  <body>
-
-      <form class="" action="login-functions.php" method="post">
-        <input type="text" name="email" value="">
-        <input type="password" name="password" value="">
-        <input type="submit" name="aanmelden" value="aanmelden">
-        <br/>
-        <button type="button" name="button"><a href="login-pagina.php">login pagina</a></button>
-
-      </form>
+    <input type="text" name="email" value="" placeholder="E-mail">
+    <br/>
+    <input type="password" name="password" value="" placeholder="Wachtwoord">
+    <br/>
+    <input class="button"type="submit" name="aanmelden" value="Aanmelden">
 
 
-
-
-
-  </body>
+  </form>
+</main>
+</body>
 </html>

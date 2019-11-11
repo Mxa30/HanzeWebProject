@@ -1,0 +1,41 @@
+
+main{
+  width: auto;
+}
+
+form{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 40%;
+    z-index: 1;
+    width: 360px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+input{
+  margin:5px;
+  padding: 0 10px;
+  border:0px;
+  border-radius: 15px;
+  background-color:#f2f2f2 ;
+  border-collapse: collapse;
+  color:black;
+  height:30px;
+  width: 150px;
+}
+
+.button{
+  margin:5px;
+  border:0px;
+  border-radius: 15px;
+  background-color:#2929CC ;
+  border-collapse: collapse;
+  color:#fff;
+  height:25px;
+  width:100px;
+
+}
+
+.button:hover {background-color: #3b488c;}
