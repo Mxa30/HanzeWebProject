@@ -1,7 +1,7 @@
 <?php
   // Querys
   $sqlGetResQuery = "
-  select I.id, I.email, I.kamernummer, I.gebouw, R.vleugel, I.starttijd, I.eindtijd, I.reserveringsdatum
+  select I.email, I.kamernummer, I.gebouw, R.vleugel, I.starttijd, I.eindtijd, I.reserveringsdatum
   from reservering I, ruimte R
   where I.kamernummer = R.kamernummer and I.gebouw = R.gebouw {$idVal}
   order by id desc;";

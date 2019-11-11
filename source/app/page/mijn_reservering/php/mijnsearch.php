@@ -1,6 +1,6 @@
 <?php
-  function search_kamer($id){
-    $idVal = "and id = {$id}";
+  function search_kamer($kamer){
+    $idVal = "and I.kamernummer = '{$kamer}'";
     return $idVal;
   }
 
