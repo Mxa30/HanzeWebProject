@@ -1,8 +1,7 @@
 <?php
 $conn = '../../../../connect.php';
 require $conn;
-
-
+include "../../../../meta.php";
 
 if(isset($_POST['aanmelden'])){
   $email = $_POST['email'];
