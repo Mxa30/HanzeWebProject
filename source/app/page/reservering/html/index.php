@@ -141,6 +141,7 @@
           $ok = TRUE;
           if ((int)($_POST["startTime"]) >= (int)($_POST["endTime"])) {
             $ok = FALSE;
+            echo "Starttijd moet voor de eindtijd zijn!";
           }
           if ($ok and (isset($timesArrayA))) {
             foreach ($timesArrayA as $blok) {
@@ -153,7 +154,7 @@
           // $email = $_SESSION['email'];
           if (isset($_SESSION['email'])) {
             $email = $_SESSION['email'];
-            
+
             $row['kamernummer'] = (int)$row['kamernummer'];
             if ($ok) {
                 $eindtijdDef = maaktijd($_POST['endTime']);
@@ -172,6 +173,7 @@
         <hr class="hr">
         <p class="tijden">Tijd: van </p>
         <select class="tijd" name="startTime">
+            <option value="0800">08:00</option>
             <option value="0830">08:30</option>
             <option value="0900">09:00</option>
             <option value="0930">09:30</option>
@@ -197,6 +199,7 @@
           </select>
         <p class="tijden">Tot </p>
         <select class="tijd" name="endTime">
+          <option value="0800">08:00</option>
           <option value="0830">08:30</option>
           <option value="0900">09:00</option>
           <option value="0930">09:30</option>
