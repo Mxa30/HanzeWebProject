@@ -26,7 +26,6 @@
               <th>Gebouw</th>
               <th>Tijd</th>
               <th>Datum</th>
-              <th>E-mail</th>
               <th>Actie</th>
             </tr>
           </thead>
@@ -39,7 +38,6 @@
                   <td>{$record['gebouw']}</td>
                   <td>{$record['starttijd']}-{$record['eindtijd']}</td>
                   <td>{$record['reserveringsdatum']}</td>
-                  <td>{$record['email']}</td>
                   <td>
                     <form method='post'>
                       <button type='submit' name='verwijder{$record['kamernummer']}' id='verwijderButton'>Verwijderen</button>
