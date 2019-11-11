@@ -3,7 +3,6 @@
   <head>
     <?php
     include "../../../../meta.php";
-    include "../php/functions.php";
     include "../../login/html/login-functions.php";
      ?>
     <meta charset="utf-8">
