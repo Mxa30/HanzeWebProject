@@ -11,6 +11,11 @@
   from reservering
   order by id desc;";
 
+  $sqlLoginQuery = "
+  SELECT I.email
+  FROM reservering I
+  WHERE I.email = {$_SESSION['email']}";
+
   // Query results
   $sqlGetResResult = mysqli_query($conn, $sqlGetResQuery);
   $sqlGetIDResult = mysqli_query($conn, $sqlGetIDQuery);
