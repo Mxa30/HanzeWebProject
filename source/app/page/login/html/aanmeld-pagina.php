@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="" dir="ltr">
   <head>
-    <?php include "../../../../meta.php" ?>
+    <?php
+    include "../../../../meta.php";
+    include "../php/functions.php";
+    include "../../login/html/login-functions.php";
+    ?>
     <meta charset="utf-8">
     <title>hoi</title>
 

@@ -1,6 +1,4 @@
 <?php
-
-session_start();
 $conn = '../../../../connect.php';
 require $conn;
 
@@ -23,6 +21,8 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
   }
 }
 
+
+//login functie;
 if(isset($_POST['login'])){
 
   //ophalen email en gebruikersnaam;
@@ -41,22 +41,20 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $_SESSION['password'] = $password;
 $getPassword = "SELECT password FROM Login WHERE email = '$email';";
 $sqlPassword = mysqli_query($conn,$getPassword);
-  if(password_verify($password, $sqlPassword)){
+  if(strcmp($password, $sqlPassword)){
     echo "$password";
 
-    echo "$sqlPassword";
-    echo "het wachtwoord is correct";
+    echo $email;
+    echo " het wachtwoord is correct";
   }else {
-  
-    echo "$sqlPassword";
-    echo "niet gelukt";
+
+    echo $email;
+    echo " niet gelukt";
     echo "<br/>";
   }
 
   $sqlLoginQuery = "SELECT email, password FROM Login WHERE email = '$email' AND password = '$password';";
-
-  //DIT MOET NOG OPGELOST WORDEN. WAARBIJ DE HASH WORDT GECHECKT
-
+// iemand die dit nog even kan nakijken?
   if (mysqli_query($conn, $sqlLoginQuery)) {
     echo "login gelukt";
     echo "<br/>";
@@ -66,6 +64,7 @@ $sqlPassword = mysqli_query($conn,$getPassword);
   }else{
     echo "<br/>";
     echo "Verkeerde login of wachtwoord: " . $sqlLoginQuery . "<br>" . mysqli_error($conn);
+    echo "<a href=\"../../login/html/login-pagina.php\">naar loginpagina</a>";
 
   }
 }
