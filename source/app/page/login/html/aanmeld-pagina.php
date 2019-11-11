@@ -26,10 +26,4 @@
 
 
   </body>
-
-  <?php
-
-  include "login-functions.php";
-  include "../../../../connect.php";
-  ?>
 </html>
