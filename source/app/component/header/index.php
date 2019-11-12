@@ -63,6 +63,17 @@
     $button2Link = null;
     // Button 3 moet een nieuwe form openen op de loginpagina zelf waar een account kan worden gemaakt
     // deze link mag dus weg worden gehaald als deze functionaliteit er is.
+    $button3Link = PAGE_PATH . "/login/html/aanmeld-pagina.php";
+    $selectedButton = null;
+  }elseif($filePath == "/source/app/page/login/html/aanmeld-pagina.php"){
+    $button1 = null;
+    $button2 = null;
+    $button3 = "Login pagina";
+    $headVal = "RoomService";
+    $button1Link = null;
+    $button2Link = null;
+    // Button 3 moet een nieuwe form openen op de loginpagina zelf waar een account kan worden gemaakt
+    // deze link mag dus weg worden gehaald als deze functionaliteit er is.
     $button3Link = PAGE_PATH . "/login/html/index.php";
     $selectedButton = null;
   }
