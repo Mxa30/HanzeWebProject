@@ -1,13 +1,15 @@
 <?php
 // Login functie
 function loginFunc($email, $pass, $conn) {
+
+
   $sqlLoginQ = "
   select email, password
   from login
   where email = '{$email}' and password = '$pass'";
   $sqlLoginResult = mysqli_query($conn, $sqlLoginQ);
   while ($record = mysqli_fetch_assoc($sqlLoginResult)) {
-    if ($record['email'] == $email && $record['password'] == $pass) {
+    if (filter_var($email,FILTER_SANITIZE_EMAIL)==true || filter_var($pass,FILTER_SANITIZE_STRING)==true && $record['email'] == $email && $record['password'] == $pass) {
       if ($email == "m.van.der.velde@st.hanze.nl" && $pass = "Wachtwoord123") {
         $_SESSION['logged'] = true;
         $_SESSION['admin'] = true;
@@ -23,6 +25,7 @@ function loginFunc($email, $pass, $conn) {
   		exit;
     }
   }
+
   // Als de while loop niets kan vinden.
   $_SESSION['logged'] = false;
   $_SESSION['admin'] = false;
@@ -30,6 +33,7 @@ function loginFunc($email, $pass, $conn) {
 }
 
 function aanmeldFunc($email, $pass, $conn) {
+  if (filter_var($email,FILTER_SANITIZE_EMAIL)==true || filter_var($pass,FILTER_SANITIZE_STRING)==true){
   $sqlLoginQ = "
   select email
   from login
@@ -62,7 +66,7 @@ function aanmeldFunc($email, $pass, $conn) {
     echo "Error: " . $sqlNewAccountQ . "<br>" . mysqli_error($conn);
   }
 }
-
+}
 // Als er een request word gedaan naar de server door middel van POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Als de POST request van de knop 'loginButton' komt
