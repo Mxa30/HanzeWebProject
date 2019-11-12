@@ -30,6 +30,8 @@
          $headTitle = "Kamer Overzicht";
        }elseif($filePath == "/source/app/page/login/html/index.php"){
          $headTitle = "Login";
+       }elseif($filePath == "/source/app/page/login/html/aanmeld-pagina.php"){
+         $headTitle = "Aanmelden";
        }elseif($filePath == "/source/app/page/mijn_reservering/html/index.php"){
          $headTitle = "Mijn Reserveringen";
        }elseif($filePath == "/source/app/page/reservering/html/index.php"){
