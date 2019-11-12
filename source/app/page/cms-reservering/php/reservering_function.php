@@ -33,6 +33,8 @@
       // Validate which button was pressed and parsing that value to the function
       if (isset($_POST['verwijder' . $record['id']])){
         delFromDB($conn,$record['id']);
+        $refresh = PAGE_PATH . "/cms-reservering/html/index.php";
+        header("location: {$refresh}");
       }
     }
   }

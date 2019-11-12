@@ -99,8 +99,18 @@
       }
     ?>
   </div>
-  <h1 class="headText"><?php echo $headVal; ?></h1>
+  <h1 class="headText"><?php if ($filePath != "/source/app/page/login/html/index.php" && $filePath != "/source/app/page/login/html/aanmeld-pagina.php") {echo "<a href='" . PAGE_PATH . "/kamer_overzicht/html/index.php'>";} ?><?php echo $headVal; ?><?php if ($filePath != "/source/app/page/login/html/index.php" && $filePath != "/source/app/page/login/html/aanmeld-pagina.php") {echo "</a>";} ?></h1>
   <div class="rightButtonContain">
-    <button type="button" class="logoutButton" name="logout" onclick="window.location.href='<?php echo $button3Link; ?>'"><?php echo $button3 ?></button>
+    <?php
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['logout'])) {
+          session_destroy();
+          header("location: {$button3Link}");
+        }
+      }
+    ?>
+    <form method="post" class="formLogout">
+      <button type="submit" class="logoutButton" name="logout" ><?php echo $button3 ?></button>
+    </form>
   </div>
 </header>

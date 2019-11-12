@@ -104,25 +104,25 @@
               $crossBoxImg = ASSET_PATH . "/Cross.png";
 
               if ($digibord) {
-                echo "<img src='{$checkBoxImg}' alt=''>";
+                echo "<img src='{$checkBoxImg}' alt='Checkbox'>";
                 echo "Digibord<br/>";
               }else{
-                echo "<img src='{$crossBoxImg}' alt=''>";
+                echo "<img src='{$crossBoxImg}' alt='Crossbox'>";
                 echo "Digibord<br/>";
               }
 
               if ($stop) {
-                echo "<img src='{$checkBoxImg}' alt=''>";
+                echo "<img src='{$checkBoxImg}' alt='Checkbox'>";
                 echo "Stopcontacten<br/>";
               }else{
-                echo "<img src='{$crossBoxImg}' alt=''>";
+                echo "<img src='{$crossBoxImg}' alt='Crossbox'>";
                 echo "Stopcontacten<br/>";
               }
               if ($white) {
-                echo "<img src='{$checkBoxImg}' alt=''>";
+                echo "<img src='{$checkBoxImg}' alt='Checkbox'>";
                 echo "Whiteboard<br/>";
               }else{
-                echo "<img src='{$crossBoxImg}' alt=''>";
+                echo "<img src='{$crossBoxImg}' alt='Crossbox'>";
                 echo "Whiteboard<br/>";
               }
             ?>
@@ -132,8 +132,8 @@
       <?php
         function maaktijd($cijfers) {
           return  substr($cijfers, 0,2). ":" .substr($cijfers, 2,2). ":00";
-      };
-       ?>
+        };
+      ?>
       <form class="Reserveringssysteem" action="index.php" method="post">
         <?php
         include "../php/reserveringFunction.php";
@@ -147,11 +147,9 @@
             foreach ($timesArrayA as $blok) {
               if (!(((int)($_POST["endTime"])) <= $blok[0] or ((int)($_POST["startTime"])) >= $blok[1])) {
                 $ok = FALSE;
-
               }
             }
           }
-          // $email = $_SESSION['email'];
           if (isset($_SESSION['email'])) {
             $email = $_SESSION['email'];
 
@@ -169,7 +167,7 @@
           }
         }
          ?>
-        <h3>reservering</h3>
+        <h3>Reservering</h3>
         <hr class="hr">
         <p class="tijden">Tijd: van </p>
         <select class="tijd" name="startTime">

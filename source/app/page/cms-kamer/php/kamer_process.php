@@ -467,9 +467,13 @@
       }
       // stuur waarden van form op naar de functie sendToDB
       sendToDB($conn,$kamerNrLijstResult,$kamerFaciliteitLijstResult,$_POST['kamerNr'],$_POST['gebouw'],$_POST['vleugel'],$_POST['verdieping'],$_POST['capaciteit'],$_POST['beschrijving'],$_POST['kamersoort'],$check1,$check2,$check3,$_POST['zichtbaar']);
+      $refresh = PAGE_PATH . "/cms-kamer/html/index.php";
+      header("location: {$refresh}");
     }
     else if (isset($_POST['submitKamerVerwijder'])){
       delFromDB($conn,$_POST['kamerNr'],$_POST['gebouw']);
+      $refresh = PAGE_PATH . "/cms-kamer/html/index.php";
+      header("location: {$refresh}");
     }
   }
 ?>

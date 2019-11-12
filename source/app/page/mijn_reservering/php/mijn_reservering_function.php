@@ -1,20 +1,15 @@
 <?php
   // Querys
   $sqlGetResQuery = "
-  select I.email, I.kamernummer, I.gebouw, R.vleugel, I.starttijd, I.eindtijd, I.reserveringsdatum
+  select distinct I.id, I.kamernummer, I.gebouw, R.vleugel, I.starttijd, I.eindtijd, I.reserveringsdatum
   from reservering I, ruimte R
-  where I.kamernummer = R.kamernummer and I.gebouw = R.gebouw {$idVal}
+  where email = '{$_SESSION['email']}' and I.kamernummer = R.kamernummer and I.gebouw = R.gebouw {$idVal}
   order by id desc;";
 
   $sqlGetIDQuery = "
   select id
   from reservering
   order by id desc;";
-
-  $sqlLoginQuery = "
-  SELECT I.email
-  FROM reservering I
-  WHERE I.email = {$_SESSION['email']}";
 
   // Query results
   $sqlGetResResult = mysqli_query($conn, $sqlGetResQuery);
@@ -38,6 +33,8 @@
       // Validate which button was pressed and parsing that value to the function
       if (isset($_POST['verwijder' . $record['id']])){
         delFromDB($conn,$record['id']);
+        $refresh = PAGE_PATH . "/mijn_reservering/html/index.php";
+        header("location: {$refresh}");
       }
     }
   }
