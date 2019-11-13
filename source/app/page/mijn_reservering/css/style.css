@@ -1,0 +1,144 @@
+<style>
+main{
+  width: 95vw;
+  height: auto;
+  margin: 10px auto 0 auto;
+}
+
+#kamerLijstID{
+  width: 100%;
+  height: 85vh;
+  background-color: #F2F2F2;
+  border-radius: 25px;
+  overflow: auto;
+  display: inline-block;
+}
+
+/* HEADER KAMERLIJST */
+.kamerHead{
+  width: 95%;
+  height:30px;
+  margin: 10px auto 0;
+  border-bottom: 1px solid #707070;
+  position: relative;
+}
+
+h2{
+  font-size: 1.2em;
+  font-weight: 300;
+  margin: 0px;
+  margin-left: 5px;
+  display: inline-block;
+}
+
+#searchFormID{
+  width: 170px;
+  display: inline-block;
+  position: absolute;
+  right: 5px;
+}
+
+#searchInputID{
+  height: 25px;
+  width: 170px;
+  border-style: none;
+  border-radius: 50px;
+  padding: 0px;
+}
+
+#searchInputID::placeholder{
+  padding-left: 10px;
+}
+
+#searchButtonID{
+  padding: 0px;
+  border-style: none;
+  background-color: #fff;
+  margin: 4px 0 0 -30px;
+  position: absolute;
+}
+
+#searchIconID{
+  width: 15px;
+  height: 15px;
+}
+
+/* TABLE KAMERLIJST */
+
+#kamerTableContain{
+  width: 95%;
+  height: auto;
+  margin: 5px auto 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+#kamerViewTableID{
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 1385px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+#kamerViewTableID th,#kamerViewTableID td{
+  border-bottom: 1px solid #707070;
+  border-left: 1px solid #707070;
+  border-right: 1px solid #707070;
+}
+
+#kamerViewTableID th{
+  padding: 10px 5px;
+}
+
+#kamerViewTableID td{
+  padding: 5px 5px;
+  height: 30px;
+}
+
+#kamerViewTableID th:first-child,#kamerViewTableID td:first-child{
+  border-left: none;
+  width: 75px;
+}
+
+#kamerViewTableID th:nth-child(2),#kamerViewTableID td:nth-child(2){
+  width: 100px;
+}
+
+#kamerViewTableID th:nth-child(3),#kamerViewTableID td:nth-child(3){
+  width: 200px;
+}
+
+#kamerViewTableID th:nth-child(4),#kamerViewTableID td:nth-child(4){
+  width: 200px;
+}
+
+#kamerViewTableID th:nth-child(5),#kamerViewTableID td:nth-child(5){
+  width: 160px;
+}
+
+#kamerViewTableID th:nth-child(6),#kamerViewTableID td:nth-child(6){
+  width: 270px;
+}
+
+#kamerViewTableID th:last-child,#kamerViewTableID td:last-child{
+  border-right: none;
+}
+
+#kamerViewTableID tr:last-child td{
+  border-bottom: none;
+}
+
+/* Knoppen in tabel */
+
+#verwijderButton{
+  padding: 0 40px;
+  height: 30px;
+  background-color: #BE0000;
+  border-style: none;
+  border-radius: 50px;
+  color: #fff;
+}
+</style>

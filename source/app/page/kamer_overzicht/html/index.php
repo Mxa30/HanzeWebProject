@@ -1,112 +1,66 @@
 <?php include "../../../../meta.php" ?>
-
-<!-- DIT MAG NIET, DIT IS PLAGIAAT , alles dat in comments staat-->
-<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-
-<!-- <script>
-$( function() {
-  $( "#datepicker" ).datepicker();
-} );
-</script> -->
-
 </head>
 <body>
-  <?php include (COMPONENT_PATH . "/header/index.php") ?>
-<div class="date">
-  <p>Date: <input type="text" id="datepicker"></p>
-</div>
+<?php include (COMPONENT_PATH . "/header/index.php") ?>
 
+<main>
+  <?php include COMPONENT_PATH . "/filter/html/index.php" ?>
+  <?php //include "../php/functions.php"; ?>
+  <div class="overzicht_main">
+    <form method="post">
+      <!-- FUNCTIE maken om de datum te veranderen-->
+    <div class="date">
+    <p>Date: <input type="date" name="date" id="datepicker"></p>
+    <?php
+    if (isset($errorCode)) {
+      echo $errorCode;
+    }
+    ?>
+    </div>
 
-  <!-- foto's van de kamers erin toevoegen -->
+    <!-- foto's van de kamers erin toevoegen -->
 
-  <!-- Poging om tijd te kunnen veranderen in een functie naast de datum(dat staat in center)-->
-  <?php
-  // $date = new DateTime('17-10-2019');
-  // $date->modify('+1 day');
-  // echo $date->format('d-m-Y');
-  ?>
-<table style="width:324px;" border="3" cellspacing="2" cellpadding="10">
+    <div class="overzicht_container">
+      <div class="overzichtTabel_container">
+            <!-- eerst de tabel maken voor de foto, met de knop 'meer informatie' -->
+          <?php
+          while ($record = mysqli_fetch_assoc($sqlGetroomnrResult)){
+            if ($record['gebouw'] == "Van DoorenVeste") {
+              $imgLink = ASSET_PATH . "/afbeelding_vanDoorenveste.jpg";
+              $gebouwVal = substr($record['gebouw'], strpos($record['gebouw'],"Van ")+4, strlen($record['gebouw']));
+            }elseif ($record['gebouw'] == "Van OlstToren") {
+              $imgLink = ASSET_PATH . "/afbeelding_vanOlsttoren.jpg";
+              $gebouwVal = substr($record['gebouw'], strpos($record['gebouw'],"Van ")+4, strlen($record['gebouw']));
+            }
+            echo "
+            <table class='headTable'>
+            <tr class='overzicht_full_container'>
+              <td class='overzicht_left_container'>
+                <table class= 'overzicht_left_inner_table '>
+                  <tr class= 'overzicht_img_container '>
+                    <td class= 'overzicht_img'><img src='{$imgLink}' alt='' style= 'width:auto; height:auto;'><hr></td>
+                  </tr>
+                  <tr class= 'overzicht_informatie_container'>
+                    <td class= 'overzicht_informatie'>Kamer: {$record['vleugel']}.{$record['kamernummer']} Locatie: {$record['gebouw']}</td>
+                  </tr class= 'overzicht_button_container'>
+                  <tr class= 'overzicht_button'>
+                    <td class='overzicht_button_td'><button class='overzicht_button_button' type='submit' name='button{$record['kamernummer']}-{$gebouwVal}'>Meer informatie</button></td>
+                  </tr>
+                </table>
+              </td>
+              <td class='overzicht_right_container'>
+                <div class='overzicht_time_container'>
 
-  <!-- FUNCTIE maken om de datum te veranderen-->
-  <!-- tabel Kamertijdtabel-->
-
-  <tr>
-    <td><b>Brugsmaborg</b></td>
-  <center>
-    <td> <b>8:00</b></td>
-    <td> <b>9:00</b></td>
-    <td> <b>10:00</b></td>
-    <td> <b>11:00</b></td>
-    <td> <b>12:00</b></td>
-    <td> <b>13:00</b></td>
-    <td> <b>14:00</b></td>
-    <td> <b>15:00</b></td>
-    <td> <b>16:00</b></td>
-    <td> <b>17:00</b></td>
-    <td> <b>18:00</b></td>
-    <td> <b>19:00</b></td>
-    <td> <b>20:00</b></td>
-  </center>
-  </tr>
-  <td>
-    <img src="../../../../asset/afbeelding_Brugsmaborg.jpg" alt="" style="width:auto; height:auto;">
-  </td>
-  <tr>
-      <td><i> Vleugel A</i></td>
-  </tr>
-
-  <tr>
-    <td>
-      Kamer 1
-      </td>
-  </tr>
-
-  <tr>
-    <td><i> Vleugel B</i></td>
-  </tr>
-
-    <tr>
-      <td>Kamer 1</td>
-    </tr>
-
-    <tr>
-      <td> <i>Vleugel C</i></td>
-    </tr>
-
-    <tr>
-      <td>Kamer 1</td>
-    </tr>
-
-      <tr>
-        <td><i> Vleugel D</i></td>
-      </tr>
-
-      <tr>
-          <td>Kamer 1</td>
-      </tr>
-
-    <tr>
-      <td><b>van Doorenveste</b></td>
-    </tr>
-    <td>
-      <img src="../../../../asset/afbeelding_vanDoorenveste.jpg" alt="" style="width:auto; height:auto;">
-    </td>
-
-    <tr>
-      <td>Kamer 1</td>
-    </tr>
-
-    <tr>
-      <td><b>van Olsttoren</b></td>
-    </tr>
-    <td>
-      <img src="../../../../asset/afbeelding_vanOlsttoren.jpg" alt="" style="width:auto; height:auto;">
-    </td>
-    <tr>
-      <td>Kamer 1</td>
-    </tr>
+                </div>
+              </td>
+            </tr>
+            </table>";
+          }
+          ?>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
 
 </body>

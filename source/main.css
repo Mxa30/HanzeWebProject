@@ -99,3 +99,20 @@ deze elementen gaat */
 select:focus, button:focus,select:hover, button:hover{
   cursor: pointer;
 }
+
+/* SELECTED BUTTON */
+.selectedButton,.headButton:hover,.logoutButton:hover{
+  background-color: #3b488c;
+}
+
+/* HEADER TAG LINK THING */
+a{
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover{
+ color:#000;
+ text-decoration:none;
+ cursor:pointer;
+}

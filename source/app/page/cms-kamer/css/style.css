@@ -6,7 +6,7 @@ main{
 
 #kamerLijstID{
   width: 60%;
-  height: 90vh;
+  height: 85vh;
   background-color: #F2F2F2;
   border-radius: 25px;
   overflow: auto;
@@ -64,13 +64,19 @@ h2{
 
 /* TABLE KAMERLIJST */
 
+#kamerTableContain table{
+  width: 1850px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
 #kamerTableContain{
   width: 95%;
   height: auto;
   margin: 5px auto 0 auto;
   position: relative;
-  overflow-x: scroll;
-  overflow-y: scroll;
 }
 
 #kamerViewTableID{
@@ -82,10 +88,14 @@ h2{
   border-bottom: 1px solid #707070;
   border-left: 1px solid #707070;
   border-right: 1px solid #707070;
-  padding: 0 50px;
+}
+
+#kamerViewTableID th{
+  padding: 10px 5px;
 }
 
 #kamerViewTableID td{
+  padding: 5px 5px;
   height: 30px;
 }
 
@@ -97,10 +107,14 @@ h2{
   border-right: none;
 }
 
+#kamerViewTableID tr:last-child td{
+  border-bottom: none;
+}
+
 /* KAMER FORM */
 #kamerFormID{
   width: 35%;
-  height: 90vh;
+  height: 85vh;
   background-color: #F2F2F2;
   border-radius: 25px;
   overflow: auto;
@@ -144,7 +158,7 @@ td input[type="checkbox"]{
 
 td textarea{
   width: 200px;
-  height: 150px;
+  height: 100px;
   border-radius: 10px;
   border-style: none;
   resize: none;

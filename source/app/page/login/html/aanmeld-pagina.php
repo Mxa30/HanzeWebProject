@@ -7,17 +7,17 @@
       <?php include (COMPONENT_PATH . "/header/index.php"); ?>
       <main>
         <form method="post" class="mainForm">
-          <h3>Login</h3>
+          <h3>Aanmelden</h3>
           <?php
-            if (isset($errorCode)) {
-              echo "<p>{$errorCode}</p>";
+            if (isset($errorCodeA)) {
+              echo "<p>{$errorCodeA}</p>";
             }
           ?>
-          <input type="email" name="email" placeholder="E-mail" required>
+          <input type="email" name="email" value="" placeholder="E-mail">
           <br/>
-          <input type="password" name="password" placeholder="Wachtwoord" required>
+          <input type="password" name="password" value="" placeholder="Wachtwoord">
           <br/>
-          <button class="button" type="submit" name="loginButton">Login</button>
+          <button class="button" type="submit" name="aanmeldButton">Aanmelden</button>
         </form>
       </main>
     </body>

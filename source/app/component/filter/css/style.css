@@ -1,0 +1,59 @@
+.multiselect {
+  width: 100%;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: auto;
+  font-weight: bold;
+  font-size: .95em;
+  border: none;
+  appearance: none;
+  background: hsla(0, 0%, 100%, 0)
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+
+}
+
+.filterFormContain {
+  width: 270px;
+  height: auto;
+  background-color: #F2F2F2;
+  padding: 15px 10px;
+  border-radius: 20px;
+}
+
+hr {
+  margin: 3px 0;
+}
+
+#filterVoegButton{
+  padding: 0 30px;
+  height: 25px;
+  background-color: #2929CC;
+  border-style: none;
+  border-radius: 50px;
+  color: #fff;
+  margin: 10px 0;
+}
